@@ -7,6 +7,8 @@
 </head>
 
 <link rel="stylesheet" href="style/book_routes.css">
+<link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 
 <body>
     <h2>Book a Route</h2>

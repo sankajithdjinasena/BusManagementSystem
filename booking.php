@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style/navs.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/booking.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 
 <body>

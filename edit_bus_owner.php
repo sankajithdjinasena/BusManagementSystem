@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <title>Edit Bus Owner</title>
     <link rel="stylesheet" href="style/form.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 <body>
     <h2>Edit Bus Owner</h2>

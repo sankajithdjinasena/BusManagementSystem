@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <title>Edit Driver </title>
     <link rel="stylesheet" href="style/form.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 <body>
     <h2>Edit Driver</h2>

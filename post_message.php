@@ -32,6 +32,7 @@ $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/post_message.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
     <title>Post Message</title>
 </head>
 

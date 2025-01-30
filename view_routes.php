@@ -4,6 +4,8 @@
 <head>
     <title>View Routes</title>
     <link rel="stylesheet" href="style/view_routes.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 <body>
     <h2>Available Routes</h2>

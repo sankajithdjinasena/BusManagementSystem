@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Change Credentials</title>
     <link rel="stylesheet" href="style/change_credential.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 <body>
     <h2>Change Credentials</h2>

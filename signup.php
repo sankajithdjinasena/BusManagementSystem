@@ -27,6 +27,8 @@ if (isset($_POST['signup'])) {
     <link rel="stylesheet" href="style/navs.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 
 </head>
 <body>

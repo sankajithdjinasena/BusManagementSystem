@@ -4,6 +4,8 @@
 <head>
     <title>Driver Registration</title>
     <link rel="stylesheet" href="style/registers.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
     
 </head>
 <body>

@@ -4,6 +4,8 @@
 <head>
     <title>View Bookings</title>
     <link rel="stylesheet" href="style/view_booking_users.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 <body>
     <h2>Bookings</h2>

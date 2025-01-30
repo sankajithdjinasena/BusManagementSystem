@@ -6,6 +6,8 @@
     <title>View Routes</title>
     <link rel="stylesheet" href="style/schedules.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 
 </head>
 

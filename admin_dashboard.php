@@ -19,6 +19,8 @@ if (!isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" href="style/navs.css">
     <link rel="stylesheet" href="style/admin_dashboards.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 
 <style>

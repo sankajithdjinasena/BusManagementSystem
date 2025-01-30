@@ -46,6 +46,7 @@ if (isset($_POST['signin'])) {
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
             <a href="admin_signin.php" id="adminbtn" style="color:red">Admin Login</a>
+            <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
         </div>
     </nav>
 

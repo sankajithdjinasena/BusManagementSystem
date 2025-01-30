@@ -7,6 +7,8 @@
     <title>Bus Owner Registration</title>
     <link rel="stylesheet" href="style/registers.css">
     <link rel="stylesheet" href="style/view_records.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
     </head>
 <body>
     <h2>Bus Owner Registration</h2>
