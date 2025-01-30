@@ -1,0 +1,119 @@
+.classB {
+    height: auto;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.classB-grid {
+    margin: 0 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-between;
+    text-align: center;
+
+
+}
+
+.classB .box {
+    margin: 10px;
+    box-shadow: 0 0 5px rgb(92, 91, 91);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.classB .box-number {
+    padding: 0 20px;
+    margin: 0px 50px;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+
+.classB-book a {
+
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 10px 60px;
+    margin: 0 10px;
+    width: auto;
+    max-width: 1200px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    transition: 0.5s ease;
+    font-weight: bold;
+}
+
+.classB-book a:hover {
+    background-color: rgb(131, 128, 128);
+    box-shadow: 0 0 8px rgb(243, 243, 243);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+#book {
+    color: red;
+    transition: 0.5s ease;
+}
+
+#book:hover {
+    text-shadow: 0 0 5px rgb(241, 2, 2);
+
+}
+
+.box2{
+    height: auto;
+    margin: 10px 10px ;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    justify-content: center;
+}
+
+.box2b{
+    border: 1px solid black;
+    cursor: pointer;
+    height: auto;
+    width: 300px;
+    margin: 25px;
+    margin-top: 20px;
+    padding: 20px;
+    padding-top: 25px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(0, 0%, 100%,0.5) ;
+    transition: 0.5s ease;
+}
+
+.box2b:hover{
+    transform: scale(1.1);
+}
+
+h3{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+#p{
+    font-size: 1.5rem;
+}
+#deletemessage{
+    cursor: pointer;
+    color: red;
+    transition: 0.5s ease;
+}
+
+#deletemessage:hover{
+    transform: scale(1.1);
+}

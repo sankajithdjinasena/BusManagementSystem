@@ -1,0 +1,85 @@
+.mission-vision-grid{
+    height: auto;
+    margin: 10px 10px ;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.target-audiance{
+    text-align: center;
+}
+.target-audiance-grid{
+    height: auto;
+    margin: 10px 10px ;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.key-benifits{
+    text-align: center;
+}
+.key-benifits-grid{
+    height: 150px;
+    margin: 10px 10px ;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.key-benifits-grid .box{
+    height: 100px;
+}
+
+
+.box{
+    height: auto;
+    width: 300px;
+    margin: 25px;
+    margin-top: 20px;
+    padding: 20px;
+    padding-top: 25px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(0, 0%, 100%,0.5) ;
+    box-shadow: 0 0 8px rgb(17, 17, 17);
+    transition: 0.5s ease;
+}
+
+.box:hover{
+    transform: scale(1.1);
+}
+
+#audience-card{
+    font-size: 2.5rem;
+    color: blue;
+}
+
+
+h2{
+    font-size: 2rem;
+}
+
+@media (max-width: 860px) {
+    .mission-vision-grid, .key-benifits-grid, .target-audiance-grid{
+        height: auto;
+        display: grid;
+    }
+}
+

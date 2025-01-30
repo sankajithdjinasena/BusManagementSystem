@@ -1,0 +1,113 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+form {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+label {
+    font-weight: bold;
+    color: #555;
+}
+input[type="text"],
+input[type="date"],
+button {
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #0056b3;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-home {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+}
+.btn-home:hover {
+    background-color: #218838;
+    color: black;
+}
+a{
+    text-decoration: none;
+    color: white;
+
+}
+button {
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button[type="submit"]{
+    background-color: #007bff;
+}
+
+button:hover {
+    background-color: #a71d2a;
+}
+button[type="submit"]:hover{
+    background-color: #0056b3;
+}
+.message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    color: green;
+}
+.error {
+    text-align: center;
+    color: red;
+}

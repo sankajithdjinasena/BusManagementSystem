@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.dashboard {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.card a {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #000000;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    width: 200px;
+    transition: 0.3s ease;
+
+}
+
+.card a:hover {
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0 0 8px rgb(255, 255, 255);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+h3 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+#div {
+    display: flex;
+}
+
+
+.messsage-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.messsage-item {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+}
+
+.messsage-item:hover {
+    background-color: #e8f5e9;
+}
+
+.messsage-item small {
+    display: block;
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.messsage-item:last-child {
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}

@@ -1,0 +1,116 @@
+<?php
+include 'db_config.php';
+
+if (isset($_POST['signup'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password !== $confirm_password) {
+        echo "<script>alert('Passwords do not match!');</script>";
+    } else {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<script>alert('Email already exists!');</script>";
+        } else {
+            $sql = "INSERT INTO users (username, email, password, is_admin) 
+                    VALUES ('$username', '$email', '$hashed_password', 1)";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "<script>alert('Admin account created successfully!'); window.location.href = 'admin_signin.php';</script>";
+            } else {
+                echo "<script>alert('Error: " . addslashes($conn->error) . "');</script>";
+            }
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Sign Up</title>
+    <link rel="stylesheet" href="style/admin_signups.css">
+    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
+        <div class="pages">
+            <a href="home.php">Home</a>
+            <a href="schedules.php">Schedules</a>
+            <a href="booking.php">Booking</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact</a>
+            <a href="admin_signin.php" id="adminbtn" style="color: red;">Admin Login</a>
+        </div>
+    </nav>
+
+    <h2>Admin Sign Up</h2>
+
+    <form method="POST" action="">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required autocomplete="off">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required autocomplete="off">
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required autocomplete="off">
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" name="confirm_password" id="confirm_password" required autocomplete="off">
+
+        <input type="submit" name="signup" value="Sign Up">
+    </form>
+    <p>Already have an account? <a href="admin_signin.php">Sign In</a></p>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-box">
+                <h3>About</h3>
+                <h4 style="font-size: 1.5rem;">
+                    Manage your bus schedules, routes, and bookings efficiently
+                </h4>
+            </div>
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p class="email-id" style="text-align: left;">Email : ridesync@outlook.com</p>
+                <h4>Telephone: +91 - 0123456789</h4>
+            </div>
+            <div class="footer-box">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="schedules.php">Schedules</a></li>
+                    <li><a href="booking.php">Booking</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Social Media</h3>
+                <br>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com/buslink/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.linkedin.com/in/buslink/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-end">
+            <h4>&copy; 2025 RIDESYNC. All Rights Reserved</h4>
+            <h5>Created by Sankajith Jinasena</h5>
+        </div>
+    </footer>
+</body>
+
+</html>

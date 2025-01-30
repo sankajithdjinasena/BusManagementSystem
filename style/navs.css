@@ -1,0 +1,102 @@
+nav {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+nav .logo {
+    width: 200px;
+    font-size: 1.5em;
+    font-weight: bold;
+    word-spacing: 10px;
+    text-align: center;
+    flex: 1 1 100%; /* Full width on small screens */
+}
+
+
+nav .pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    flex: 1 1 100%; /* Full width on small screens */
+    flex-wrap: wrap; /* Allow wrapping for links */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+nav .pages a {
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(53, 52, 52, 0.5);
+    transition: 0.5s ease;
+    flex: 1 1 auto; /* Responsive sizing for links */
+}
+
+nav .pages a:hover {
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0 0 8px rgb(243, 243, 243);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+marquee {
+    color: rgb(149, 247, 247);
+}
+
+#active {
+    color: red;
+}
+
+#adminbtn {
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(2, 2, 2, 0.5);
+    transition: 0.5s ease;
+    width: 200px;
+}
+#adminbtn:hover{
+    transform: scale(0.9);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack logo and links vertically */
+        align-items: center;
+    }
+
+    nav .logo {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    nav .pages a {
+        flex: 1 1 45%; /* Two links per row on small screens */
+    }
+
+    #adminbtn {
+        width: 100%; /* Full width for admin button */
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .pages a {
+        flex: 1 1 100%; /* Full width for each link */
+    }
+}

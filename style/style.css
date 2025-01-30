@@ -1,0 +1,196 @@
+body {
+    margin: 10px;
+    padding: 0;
+    font-family: Arial;
+}
+
+/*ClassA - Welcoming*/
+
+.classA {
+    background: url("Images/bg3.jpg");
+    border-radius: 5px;
+    margin-top: 10px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.classA-start {
+
+    height: 90vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 5px rgb(92, 91, 91);
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+.classA-content {
+    height: 250px;
+    border-radius: 5px;
+    margin: 0 100px;
+    padding: 15px;
+    text-align: center;
+}
+
+.classA-content h1 #welcome {
+    transition: 0.5s ease;
+    cursor: default;
+}
+
+.classA-content h1 #welcome:hover {
+    text-shadow: 0 0 10px rgb(1, 24, 230);
+}
+
+.classA-content p {
+    font-size: 1.25rem;
+}
+
+.classA-Image img {
+    height: 600px;
+    width: 600px;
+    margin-top: 0;
+}
+
+#bookp {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.classA-book a {
+
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 10px 60px;
+    margin: 0 10px;
+    width: auto;
+    max-width: 1200px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    transition: 0.5s ease;
+    font-weight: bold;
+}
+
+.classA-book a:hover {
+    background-color: rgb(131, 128, 128);
+    box-shadow: 0 0 8px rgb(243, 243, 243);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/*ClassB - Welcoming*/
+.classB {
+    height: auto;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.classB-grid {
+    margin: 0 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-between;
+    text-align: center;
+
+
+}
+
+.classB .box {
+    margin: 10px;
+    box-shadow: 0 0 5px rgb(92, 91, 91);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.classB .box-number {
+    padding: 0 20px;
+    margin: 0px 50px;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+/**/
+.map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+iframe {
+    width: 80%;
+    height: 500px;
+    width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(241, 2, 2);
+
+}
+
+#book {
+    color: red;
+    transition: 0.5s ease;
+}
+
+#book:hover {
+    text-shadow: 0 0 5px rgb(241, 2, 2);
+
+}
+
+/* Announcment */
+
+.messsage-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.messsage-item {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.messsage-item:hover {
+    background-color: #e8f5e9;
+    transform: scale(1.05);
+}
+
+.messsage-item small {
+    display: block;
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.messsage-item:last-child {
+    margin-bottom: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#contact{
+    padding: 50px;
+}
