@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Route</title>
     <link rel="stylesheet" href="style/registers.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/registers.css">
+    <link rel="stylesheet" href="style/view_records.css">
 
 
 </head>
@@ -57,8 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="number" name="bus_id" value="<?php echo $route['bus_id']; ?>" required><br>
         <label for="available_seats">Available Seats:</label>
         <input type="number" name="available_seats" value="<?php echo $route['available_seats']; ?>" required><br>
-        <button type="submit">Update Route</button>
+        <button type="submit">Update Record</button>
     </form>
+    <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+
 </body>
 
 </html>

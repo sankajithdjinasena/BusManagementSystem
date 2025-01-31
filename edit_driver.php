@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Driver </title>
     <link rel="stylesheet" href="style/form.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/registers.css">
+    <link rel="stylesheet" href="style/view_records.css">
 
 </head>
 <body>
@@ -56,5 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Update</button>
         <a href="view_records.php">Cancel</a>
     </form>
+
+    <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+
 </body>
 </html>

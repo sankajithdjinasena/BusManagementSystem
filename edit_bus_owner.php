@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Bus Owner</title>
     <link rel="stylesheet" href="style/form.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="style/view_records.css">
+    <link rel="stylesheet" href="style/registers.css">
 </head>
 <body>
     <h2>Edit Bus Owner</h2>
@@ -51,40 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Update</button>
         <a href="view_records.php">Cancel</a>
     </form>
+    <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
 
-    <h2>Bus Owners</h2>
-    <form method="GET" action="">
-        <label for="filter_bus_owner">Filter by NIC:</label>
-        <input type="text" name="filter_bus_owner" id="filter_bus_owner" placeholder="Enter NIC">
-        <button type="submit">Filter</button>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>NIC</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $filter = isset($_GET['filter_bus_owner']) ? $_GET['filter_bus_owner'] : '';
-            $sql = "SELECT * FROM bus_owners";
-            if (!empty($filter)) {
-                $sql .= " WHERE nic = '$filter'";
-            }
-            $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['nic']}</td>
-                        <td>{$row['email']}</td>
-                      </tr>";
-            }
-            ?>
-        </tbody>
-    </table>
 </body>
 </html>
