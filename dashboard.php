@@ -44,13 +44,13 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <h3>Announcements:</h3>
-        <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC");
+        <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC LIMIT 5");
         ?>
         <div class="messsage-container">
             <ul>
             <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
-                        <li class="message-item"><?php echo $row['message']; ?>
+                        <li class="message-item" style=" padding: 10px; margin-bottom: 15px;border-left: 5px solid #4CAF50;background-color: #f9f9f9; transition: background-color 0.3s ease"><?php echo $row['message']; ?>
                             <small>(Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
                     <?php } ?>

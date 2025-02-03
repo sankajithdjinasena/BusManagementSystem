@@ -70,7 +70,7 @@ marquee {
     width: 200px;
 }
 #adminbtn:hover{
-    transform: scale(0.9);
+    color: aqua;
 }
 
 /* Responsive Styles */
@@ -90,8 +90,8 @@ marquee {
     }
 
     #adminbtn {
-        width: 100%; /* Full width for admin button */
-        margin-top: 10px;
+        width: 100px; /* Full width for admin button */
+        margin-top: 0;
     }
 }
 

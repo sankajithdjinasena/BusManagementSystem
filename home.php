@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RIDESYNC - Home</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/home.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="style/contact.css">
 </head>
 
 <body>
@@ -29,26 +30,29 @@
 
     <div class="classA">
         <div class="classA-start">
-            <div class="classA-Image"><img src="Images/LogoN.png" alt=""></div>
+            <div class="classA-Image"><img src="Images/LogoN.png" alt="RIDESYNC Logo"></div>
             <div class="classA-content">
-                <h1 style="font-size: 3.5rem;"><span id="welcome" style="font-size: 6rem; letter-spacing: 15px;">WELCOME <br></span> TO THE <span style="color: red;">RIDESYNC</span></h1>
+                <h1>WELCOME TO THE RIDESYNC</h1>
                 <p>Manage your bus schedules, routes, and bookings efficiently.</p>
-                <div class="classA-book">
-                    <p id="bookp">Book Your Ride 👇</p>
-                    <a href="booking.php">Book</a>
+                <p id="bookp">Book Your Ride </p>
+                <div class="classB-book">
+                    <a href="booking.php">Book</a> 
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+    </style>
     <div>
         <h3 style="color: #000000; font-size:40px; text-align:center;">ANNOUNCEMENT</h3>
-        <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC");
+        <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC LIMIT 5");
         ?>
         <div class="messsage-container" style="text-align: left;">
             <ul>
             <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
-                        <li class="message-item"><?php echo $row['message']; ?>
+                        <li class="message-item" style=" padding: 10px; margin-bottom: 15px;border-left: 5px solid #4CAF50;background-color: #f9f9f9; transition: background-color 0.3s ease"><?php echo $row['message']; ?>
                             <small>(Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
                     <?php } ?>
@@ -79,7 +83,7 @@
             </div>
         </div>
         <br>
-        <div class="classA-book">
+        <div class="classB-book">
             <a href="signin.php">Sign In</a>
             <a href="signup.php">Sign Up</a>
         </div>
@@ -87,8 +91,9 @@
 
     <h3 id="contact" style="color: #000000; font-size:40px; text-align:center;">Contact us</h3>
 
+    <link rel="stylesheet" href="style/contact.css">
     <div class="container">
-        <link rel="stylesheet" href="style/contacts.css">
+        <link rel="stylesheet" href="style/contact.css">
         <div class="box1">
             <h1 id="box1h1">Let's chat</h1>
             <p id="p">Whether you have a question, want to connect</p>

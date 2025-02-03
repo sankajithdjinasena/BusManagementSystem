@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUSLINK - Contact</title>
-    <link rel="stylesheet" href="style/contacts.css">
     <link rel="icon" href="Images/Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/contact.css">
+
 </head>
 
 <body>
@@ -26,16 +27,13 @@
     </nav>
 
     <div class="container">
-        <div class="box1">
-            <img src="Images/LogoN.png" alt="">
+    <div class="box1">
             <h1 id="box1h1">Let's chat</h1>
             <p id="p">Whether you have a question, want to connect</p>
             <p id="p">Feel free to send me a message in the contact form</p>
         </div>
         <div class="box3">
-
-            <h1>Contact us</h1>
-
+            <h1><center>Contact us</center></h1>
             <form action="contact_form.php" method="POST">
                 <input id="contact-form" type="text" name="name" placeholder="Name*" required>
                 <input id="contact-form" type="email" name="email" placeholder="Email*" required>

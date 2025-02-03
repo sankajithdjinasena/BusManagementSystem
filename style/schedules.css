@@ -46,60 +46,57 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
 table {
-    border-collapse: collapse;
     width: 100%;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+@media screen and (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
 
-.btn-home {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #28a745;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px auto;
-    display: block;
-    width: fit-content;
-}
+    tr {
+        margin: 0 0 1rem 0;
+    }
 
-.btn-home:hover {
-    background-color: #218838;
-}
+    tr:nth-child(odd) {
+        background: #f2f2f2;
+    }
 
-.message {
-    text-align: center;
-    font-size: 16px;
-    margin-top: 20px;
-    color: green;
-}
+    td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
 
-.error {
-    text-align: center;
-    color: red;
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        text-align: left;
+        font-weight: bold;
+    }
 }

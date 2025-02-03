@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Redirect user to admin login page if not logged in as admin
 if (!isset($_SESSION['admin_id'])) {
     header("Location: admin_signin.php");
     exit();
@@ -50,6 +49,8 @@ if (!isset($_SESSION['admin_id'])) {
     #adminbtn:hover {
         transform: scale(0.9);
     }
+
+    
 </style>
 
 <body>
@@ -131,20 +132,19 @@ if (!isset($_SESSION['admin_id'])) {
             <ul>
                 <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
-                        <li class="message-item"><?php echo $row['message']; ?>
+                        <li class="message-item" style=" padding: 10px; margin-bottom: 15px;border-left: 5px solid #4CAF50;background-color: #f9f9f9; transition: background-color 0.3s ease"><?php echo $row['message']; ?>
                             <small>(Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
-                    <?php } ?>
-                <?php } else { ?>
+                    <?php } 
+                    } else {?>
                     <li class="message-item"><h3 style="text-align: center; color:black">No announcements</h3></li>
                 <?php } ?>
-
             </ul>
         </div>
     </div>
     <div>
         <h3 style="color: #000000;">Contact Messages</h3>
-        <?php $messages = $conn->query("SELECT * FROM contacts ORDER BY created_at DESC");
+        <?php $messages = $conn->query("SELECT * FROM contacts ORDER BY created_at DESC LIMIT 5");
         ?>
         <div class="messsage-container" style="text-align: left;">
             <ul>

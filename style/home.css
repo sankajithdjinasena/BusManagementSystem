@@ -6,82 +6,95 @@ body {
 
 /*ClassA - Welcoming*/
 
+
 .classA {
-    background: url("Images/bg3.jpg");
-    border-radius: 5px;
-    margin-top: 10px;
-    width: auto;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.classA-start {
-
-    height: 90vh;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
     display: flex;
-    box-shadow: 0 0 5px rgb(92, 91, 91);
-    background-color: rgba(255, 255, 255, 0.5);
-
-}
-
-.classA-content {
-    height: 250px;
-    border-radius: 5px;
-    margin: 0 100px;
-    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     text-align: center;
 }
 
-.classA-content h1 #welcome {
-    transition: 0.5s ease;
-    cursor: default;
+.classA-start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.classA-content h1 #welcome:hover {
-    text-shadow: 0 0 10px rgb(1, 24, 230);
+.classA-Image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.classA-content {
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.classA-content p{
+    font-size: 1.2rem;
+}
+
+.classA-content h1 {
+    font-size: 3.5rem;
+}
+
+
+.classA-book {
+    margin-top: 20px;
+}
+
+.classB-book a {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 15px 50px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(2, 2, 2, 0.5);
+    transition: 0.5s ease;
+    width: 200px;
+    font-size: 1.5rem;
+}
+
+.classB-book a:hover{
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0 0 8px rgb(243, 243, 243);
+    color: #fff;
+    transform: scale(1.01);
 }
 
 .classA-content p {
     font-size: 1.25rem;
 }
-
-.classA-Image img {
-    height: 600px;
-    width: 600px;
-    margin-top: 0;
+@media (min-width: 1900px){
+    .classA-content h1{
+        font-size: 4.5rem;
+        text-align: center;
+    }
+    .classA-content {
+        max-width: 1500px;
+        margin-top: 20px;
+    }
 }
+@media (max-width: 768px) {
+    .classA-start {
+        flex-direction: column;
+        text-align: left;
+    }
 
-#bookp {
-    font-size: 2.5rem;
-    font-weight: bold;
-}
+    .classA-content {
+        margin-left: 20px;
+        margin-top: 0;
+        text-align: center;
+    }
 
-.classA-book a {
-    font-size: 1.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    border: 2px solid rgb(255, 255, 255);
-    padding: 10px 60px;
-    margin: 0 10px;
-    width: auto;
-    max-width: 1200px;
-    text-align: center;
-    border-radius: 5px;
-    background-color: rgb(0, 0, 0);
-    transition: 0.5s ease;
-    font-weight: bold;
-}
-
-.classA-book a:hover {
-    background-color: rgb(131, 128, 128);
-    box-shadow: 0 0 8px rgb(243, 243, 243);
-    color: #fff;
-    transform: scale(1.05);
+    .classA-content h1{
+        font-size: 2.5rem;
+        text-align: center;
+        
+    }
 }
 
 /*ClassB - Welcoming*/

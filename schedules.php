@@ -40,6 +40,7 @@
     </form>
 
     <table>
+        <link rel="stylesheet" href="style/schedule_table_responsive.css">
         <thead>
             <tr>
                 <th>Route ID</th>
@@ -97,17 +98,17 @@
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='9'>No Schedules available.</td></tr>";
+                echo "<tr><td colspan='8'>No Schedules available.</td></tr>";
             }
             ?>
         </tbody>
     </table>
+    
 
 
     <br>
 
     <footer>
-        >
         <div class="footer-grid">
             <div class="footer-box">
                 <h3>About</h3>
