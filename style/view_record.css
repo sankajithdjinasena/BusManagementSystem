@@ -82,3 +82,62 @@ form {
 .btn-home:hover {
     background-color: #218838;
 }
+
+
+@media(max-width:600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+
+    }
+
+    #firstrow{
+        background-color: #000000;
+        border-radius: 5px;   
+        text-align: center;
+        color: white;
+        align-items: center;
+    }
+
+    #firsthead{
+        text-align: center;
+    }
+
+
+    td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td::before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-title) " : ";
+        float: left;
+        text-align: left;
+        font-weight: bold;
+    }
+    form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+}

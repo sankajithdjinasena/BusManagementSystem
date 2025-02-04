@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Route Registration</title>
-    <link rel="stylesheet" href="style/registers.css">
+    <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/view_records.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
@@ -62,9 +62,9 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['bus_number']}</td>
-                        <td>{$row['route']}</td>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Bus Number'>{$row['bus_number']}</td>
+                        <td data-title='Route'>{$row['route']}</td>
                       </tr>";
             }
             ?>

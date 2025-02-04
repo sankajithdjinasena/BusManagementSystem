@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Bus Registration</title>
-    <link rel="stylesheet" href="style/registers.css">
+    <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/view_records.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
@@ -59,10 +59,10 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['nic']}</td>
-                        <td>{$row['email']}</td>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Name'>{$row['name']}</td>
+                        <td data-title='NIC'>{$row['nic']}</td>
+                        <td data-title='Email'>{$row['email']}</td>
                       </tr>";
             }
             ?>
@@ -94,10 +94,10 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['nic']}</td>
-                        <td>{$row['license_number']}</td>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Name'>{$row['name']}</td>
+                        <td data-title='NIC'>{$row['nic']}</td>
+                        <td data-title='License'>{$row['license_number']}</td>
                       </tr>";
             }
             ?>

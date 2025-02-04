@@ -37,7 +37,7 @@ if (isset($_POST['signup'])) {
     <meta charset="UTF-8">
     <title>Admin Sign Up</title>
     <link rel="stylesheet" href="style/admin_signups.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">

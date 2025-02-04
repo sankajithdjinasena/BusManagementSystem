@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUSLINK - About</title>
     <link rel="stylesheet" href="style/aboutcs.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="icon" href="Images/Logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">

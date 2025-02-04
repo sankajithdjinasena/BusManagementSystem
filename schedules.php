@@ -4,9 +4,9 @@
 
 <head>
     <title>View Routes</title>
-    <link rel="stylesheet" href="style/schedules.css">
+    <link rel="stylesheet" href="style/schedule.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
@@ -27,7 +27,7 @@
     </nav>
 
     <h2>Available Bus Schedules</h2>
-    <form method="GET" action="" style="max-width: 800px; margin: 0 auto;">
+    <form method="GET" action="">
         <label for="filter_bus">Bus No:</label>
         <input type="text" name="filter_bus" id="filter_bus" placeholder="Enter bus no">
         <label for="filter_departure">Departure Place:</label>
@@ -43,7 +43,7 @@
         <link rel="stylesheet" href="style/schedule_table_responsive.css">
         <thead>
             <tr>
-                <th>Route ID</th>
+                <th id="firsthead">Route ID</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Departure Place</th>
@@ -87,14 +87,14 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['date']}</td>
-                            <td>{$row['time']}</td>
-                            <td>{$row['departure_place']}</td>
-                            <td>{$row['arrival_place']}</td>
-                            <td>{$row['duration']}</td>
-                            <td>{$row['bus_number']}</td>
-                            <td>{$row['available_seats']}</td>
+                            <td id='firstrow' data-title='Route ID'><b>{$row['id']}</b></td>
+                            <td data-title='Date'>{$row['date']}</td>
+                            <td data-title='Time'>{$row['time']}</td>
+                            <td data-title='Departure Place'>{$row['departure_place']}</td>
+                            <td data-title='Arrival Place'>{$row['arrival_place']}</td>
+                            <td data-title='Duration(hours)'>{$row['duration']}</td>
+                            <td data-title='Bus Number'>{$row['bus_number']}</td>
+                            <td data-title='Available Seats'>{$row['available_seats']}</td>
                           </tr>";
                 }
             } else {

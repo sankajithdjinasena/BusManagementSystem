@@ -15,8 +15,8 @@ if (!isset($_SESSION['admin_id'])) {
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style/footer.css">
-    <link rel="stylesheet" href="style/navs.css">
-    <link rel="stylesheet" href="style/admin_dashboards.css">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/admin_dashboard.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
@@ -47,7 +47,7 @@ if (!isset($_SESSION['admin_id'])) {
     }
 
     #adminbtn:hover {
-        transform: scale(0.9);
+        transform: scale(1.002);
     }
 
     
@@ -150,9 +150,9 @@ if (!isset($_SESSION['admin_id'])) {
             <ul>
                 <?php while ($row = $messages->fetch_assoc()) { ?>
                     <li class="messsage-item"><?php echo $row['message']; ?><br>
-                        <small>Name : <?php echo $row['name']; ?></small>
-                        <small>Email : <?php echo $row['email']; ?></small>
-                        <small>Phone : <?php echo $row['phone']; ?></small>
+                        <small>Name : <?php echo $row['name']; ?></small><br>
+                        <small>Email : <?php echo $row['email']; ?></small><br>
+                        <small>Phone : <?php echo $row['phone']; ?></small><br>
                         <small>Posted on: <?php echo $row['created_at']; ?></small>
                     </li>
                 <?php } ?>

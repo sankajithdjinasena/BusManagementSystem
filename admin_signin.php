@@ -31,7 +31,7 @@ if (isset($_POST['signin'])) {
     <meta charset="UTF-8">
     <title>Admin Sign In</title>
     <link rel="stylesheet" href="style/admin_signins.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>

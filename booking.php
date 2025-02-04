@@ -5,7 +5,7 @@
 <head>
     <title>View Routes</title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="style/navs.css">
+    <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/booking.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
@@ -102,7 +102,7 @@
 
         <div class="classB-grid">
             <div class="box">
-                <h1 id="deletemessage"> ! Please Contact us for delete your bookings !</h1>
+                <h1 id="deletemessage"> You can Contact us for delete your bookings </h1>
                 <p><b>Please Contact us using registered email or phone number that you used in booking</b></p>
             </div>
         </div>

@@ -47,11 +47,13 @@ button:hover {
     background-color: #0056b3;
 }
 table {
+    text-align: center;
     width: 100%;
     border-collapse: collapse;
 }
 
 th, td {
+    text-align: center;
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -61,7 +63,7 @@ th {
     background-color: #f2f2f2;
 }
 
-@media screen and (max-width: 600px) {
+@media(max-width:1200px) {
     table, thead, tbody, th, td, tr {
         display: block;
     }
@@ -74,11 +76,21 @@ th {
 
     tr {
         margin: 0 0 1rem 0;
+
     }
 
-    tr:nth-child(odd) {
-        background: #f2f2f2;
+    #firstrow{
+        background-color: #000000;
+        border-radius: 5px;   
+        text-align: center;
+        color: white;
+        align-items: center;
     }
+
+    #firsthead{
+        text-align: center;
+    }
+
 
     td {
         border: none;
@@ -88,15 +100,23 @@ th {
         text-align: right;
     }
 
-    td:before {
+    td::before {
         position: absolute;
         top: 6px;
         left: 6px;
         width: 45%;
         padding-right: 10px;
         white-space: nowrap;
-        content: attr(data-label);
+        content: attr(data-title) " : ";
+        float: left;
         text-align: left;
         font-weight: bold;
+    }
+    form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
     }
 }

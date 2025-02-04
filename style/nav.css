@@ -90,7 +90,7 @@ marquee {
     }
 
     #adminbtn {
-        width: 100px; /* Full width for admin button */
+        width: 100%; /* Full width for admin button */
         margin-top: 0;
     }
 }
@@ -98,5 +98,10 @@ marquee {
 @media (max-width: 480px) {
     nav .pages a {
         flex: 1 1 100%; /* Full width for each link */
+    }
+
+    #adminbtn {
+        width: 100%; /* Full width for admin button */
+        margin-top: 0;
     }
 }

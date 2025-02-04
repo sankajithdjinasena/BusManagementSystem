@@ -45,6 +45,22 @@
     <style>
     </style>
     <div>
+        <style>
+
+            .messsage-item{
+                cursor: pointer;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-left: 5px solid #4CAF50;
+                background-color: #f9f9f9;
+                transition: background-color 0.3s ease;
+                transform: 0.3s ease;
+            }
+            .messsage-item:hover {
+                background-color: #e8f5e9;
+                transform: scale(1.05);
+}
+        </style>
         <h3 style="color: #000000; font-size:40px; text-align:center;">ANNOUNCEMENT</h3>
         <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC LIMIT 5");
         ?>
