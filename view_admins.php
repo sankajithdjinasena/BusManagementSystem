@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Users</title>
-    <link rel="stylesheet" href="style/view_users.css">
+    <link rel="stylesheet" href="style/view_user.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
 </head>
@@ -56,10 +56,10 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['username']}</td>
-                            <td>{$row['email']}</td>
-                            <td>{$row['created_at']}</td>
+                            <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                            <td data-title='Username'>{$row['username']}</td>
+                            <td data-title='Email'>{$row['email']}</td>
+                            <td data-title='Created At'>{$row['created_at']}</td>
                           </tr>";
                 }
             } else {

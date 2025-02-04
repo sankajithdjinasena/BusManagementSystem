@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="style/view_records.css">
+    <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
     <title>View Records</title>
@@ -37,12 +37,12 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['nic']}</td>
-                        <td>{$row['email']}</td>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Name'>{$row['name']}</td>
+                        <td data-title='NIC'>{$row['nic']}</td>
+                        <td data-title='Email'>{$row['email']}</td>
                         
-                        <td>
+                        <td data-title='Email'>
                             <button><a href='edit_bus_owner.php?table=bus_owners&id={$row['id']}'>Edit</a></button>
                             <button><a href='delete_record.php?table=bus_owners&id={$row['id']}'>Delete</a></button>
                         </td>
@@ -65,7 +65,6 @@
                 <th>Name</th>
                 <th>NIC</th>
                 <th>License</th>
-                <th>Updated At</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -79,12 +78,11 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['name']}</td>
-                        <td>{$row['nic']}</td>
-                        <td>{$row['license_number']}</td>
-                        <td>{$row['updated_at']}</td>
-                        <td>
+                        <td id='firstrow'  data-title='ID'>{$row['id']}</td>
+                        <td data-title='Name'>{$row['name']}</td>
+                        <td data-title='NIC'>{$row['nic']}</td>
+                        <td data-title='License'>{$row['license_number']}</td>
+                        <td data-title='Actions'>
                             <button><a href='edit_driver.php?table=drivers&id={$row['id']}'>Edit</a></button>
                             <button><a href='delete_record.php?table=drivers&id={$row['id']}'>Delete</a></button>
                         </td>
@@ -119,10 +117,10 @@
             $result = $conn->query($sql);
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['bus_number']}</td>
-                        <td>{$row['route']}</td>
-                        <td>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Bus Number'>{$row['bus_number']}</td>
+                        <td data-title='Route'>{$row['route']}</td>
+                        <td data-title='Actions'>
                             <button><a href='edit_bus.php?table=buses&id={$row['id']}'>Edit</a></button>
                             <button><a href='delete_record.php?table=buses&id={$row['id']}'>Delete</a></button>
                         </td>
