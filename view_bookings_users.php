@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>View Bookings</title>
-    <link rel="stylesheet" href="style/view_booking_users.css">
+    <link rel="stylesheet" href="style/view_booking_user.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
 </head>
@@ -50,16 +50,16 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                                <td>{$row['id']}</td>
-                                <td>{$row['customer_name']}</td>
-                                <td>{$row['customer_phone']}</td>
-                                <td>{$row['email']}</td>
-                                <td>{$row['seats_booked']}</td>
-                                <td>{$row['date']}</td>
-                                <td>{$row['time']}</td>
-                                <td>{$row['departure_place']}</td>
-                                <td>{$row['arrival_place']}</td>
-                                <td>
+                                <td id='firstrow' data-title='Booking ID'>{$row['id']}</td>
+                                <td data-title='Customer Name'>{$row['customer_name']}</td>
+                                <td data-title='Phone'>{$row['customer_phone']}</td>
+                                <td data-title='Email'>{$row['email']}</td>
+                                <td data-title='Seats Booked'>{$row['seats_booked']}</td>
+                                <td data-title='Date'>{$row['date']}</td>
+                                <td data-title='Time'>{$row['time']}</td>
+                                <td data-title='Departure'>{$row['departure_place']}</td>
+                                <td data-title='Arrival'>{$row['arrival_place']}</td>
+                                <td data-title='Actions'>
                                     <form action='delete_booking_user.php' method='POST'>
                                         <input type='hidden' name='booking_id' value='{$row['id']}'>
                                         <button type='submit'>Delete</button>
