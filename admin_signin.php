@@ -29,11 +29,13 @@ if (isset($_POST['signin'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Sign In</title>
+    <title>RIDESYNC - Admin Sign In</title>
     <link rel="stylesheet" href="style/admin_signins.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+
 </head>
 
 <body>

@@ -57,10 +57,10 @@ $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC"
         <tbody>
             <?php while ($row = $messages->fetch_assoc()) { ?>
                 <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['message']; ?></td>
-                    <td><?php echo $row['created_at']; ?></td>
-                    <td>
+                    <td id='firstrow' data-title='ID'><?php echo $row['id']; ?></td>
+                    <td data-title='Message'><?php echo $row['message']; ?></td>
+                    <td data-title='Posted At'><?php echo $row['created_at']; ?></td>
+                    <td data-title='Action'>
                         <a href="post_message.php?delete_id=<?php echo $row['id']; ?>"
                             onclick="return confirm('Are you sure you want to delete this message?');">Delete</a>
                     </td>

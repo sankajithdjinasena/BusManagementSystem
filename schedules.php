@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>View Routes</title>
+    <title>RIDESYNC - Schedules</title>
     <link rel="stylesheet" href="style/schedule.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style/nav.css">

@@ -4,7 +4,7 @@
 <head>
     <title>Book a Route</title>
 </head>
-    <link rel="stylesheet" href="style/book_routes.css">
+    <link rel="stylesheet" href="style/book_route.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
 
@@ -108,14 +108,14 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['date']}</td>
-                        <td>{$row['time']}</td>
-                        <td>{$row['departure_place']}</td>
-                        <td>{$row['arrival_place']}</td>
-                        <td>{$row['duration']}</td>
-                        <td>{$row['bus_number']}</td>
-                        <td>{$row['available_seats']}</td>
+                        <td id='firstrow' data-title='Route ID'>{$row['id']}</td>
+                        <td data-title='Date'>{$row['date']}</td>
+                        <td data-title='Time'>{$row['time']}</td>
+                        <td data-title='Departure Place'>{$row['departure_place']}</td>
+                        <td data-title='Arrival Place'>{$row['arrival_place']}</td>
+                        <td data-title='Duration'>{$row['duration']}</td>
+                        <td data-title='Bus Number'>{$row['bus_number']}</td>
+                        <td data-title='Available Seats'>{$row['available_seats']}</td>
                       </tr>";
                     }
                 } else {

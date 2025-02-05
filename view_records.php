@@ -5,7 +5,15 @@
 <head>
     <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-
+    <style>
+        input[type="text"],input[type="number"],button {
+        padding: 8px;
+        margin: 0 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        }
+    </style>
     <title>View Records</title>
 </head>
 

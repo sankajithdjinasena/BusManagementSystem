@@ -35,7 +35,7 @@ if (isset($_POST['signup'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Sign Up</title>
+    <title>RIDESYNC - Admin Sign Up</title>
     <link rel="stylesheet" href="style/admin_signups.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">

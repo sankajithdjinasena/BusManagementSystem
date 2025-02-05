@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>View Routes</title>
+    <title>RIDESYNC - Booking</title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">

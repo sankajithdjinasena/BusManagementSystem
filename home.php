@@ -3,6 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+    .message-item:hover {
+        background-color: #e8f5e9;
+        transform: scale(1.05);
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +20,8 @@
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="style/contact.css">
+    <link rel="stylesheet" href="style/message.css">
+
 </head>
 
 <body>
@@ -36,7 +45,7 @@
                 <p>Manage your bus schedules, routes, and bookings efficiently.</p>
                 <p id="bookp">Book Your Ride </p>
                 <div class="classB-book">
-                    <a href="booking.php">Book</a> 
+                    <a href="booking.php">Book</a>
                 </div>
             </div>
         </div>
@@ -45,35 +54,39 @@
     <style>
     </style>
     <div>
-        <style>
-
-            .messsage-item{
-                cursor: pointer;
-                padding: 10px;
-                margin-bottom: 15px;
-                border-left: 5px solid #4CAF50;
-                background-color: #f9f9f9;
-                transition: background-color 0.3s ease;
-                transform: 0.3s ease;
-            }
-            .messsage-item:hover {
-                background-color: #e8f5e9;
-                transform: scale(1.05);
-}
-        </style>
         <h3 style="color: #000000; font-size:40px; text-align:center;">ANNOUNCEMENT</h3>
         <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC LIMIT 5");
         ?>
-        <div class="messsage-container" style="text-align: left;">
-            <ul>
-            <?php if ($messages->num_rows > 0) { ?>
+
+        <div class="messsage-container" style="width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <ul style="list-style-type: none;
+    padding: 0;">
+                <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
-                        <li class="message-item" style=" padding: 10px; margin-bottom: 15px;border-left: 5px solid #4CAF50;background-color: #f9f9f9; transition: background-color 0.3s ease"><?php echo $row['message']; ?>
-                            <small>(Posted on: <?php echo $row['created_at']; ?>)</small>
+                        <li class="message-item" style="cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    transition: 0.3s ease; ">
+                            <?php echo $row['message']; ?>
+                            <small style="display: block;
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;">(Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
                     <?php } ?>
                 <?php } else { ?>
-                    <li class="message-item"><h3 style="text-align: center;">No announcements</h3></li>
+                    <li class="message-item">
+                        <h3 style="text-align: center;">No announcements</h3>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
@@ -109,7 +122,6 @@
 
     <link rel="stylesheet" href="style/contact.css">
     <div class="container">
-        <link rel="stylesheet" href="style/contact.css">
         <div class="box1">
             <h1 id="box1h1">Let's chat</h1>
             <p id="p">Whether you have a question, want to connect</p>

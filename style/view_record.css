@@ -35,6 +35,10 @@ a{
     color: white;
 
 }
+
+
+
+
 button {
     padding: 8px 12px;
     background-color: #dc3545;
@@ -82,7 +86,6 @@ form {
 .btn-home:hover {
     background-color: #218838;
 }
-
 
 @media(max-width:600px) {
     table, thead, tbody, th, td, tr {

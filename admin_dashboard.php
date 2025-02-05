@@ -13,7 +13,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>RIDESYNC - Admin Dashboard</title>
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/admin_dashboard.css">
@@ -108,9 +108,6 @@ if (!isset($_SESSION['admin_id'])) {
         <div class="panel">
             <div id="div">
                 <h3>Other</h3>
-                <div class="card">
-                    <a href="schedules_user.php">Schedules</a>
-                </div>
                 <div class="card">
                     <a href="book_route_admin.php">Book a Route</a>
 
