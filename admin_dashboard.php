@@ -116,6 +116,9 @@ if (!isset($_SESSION['admin_id'])) {
                     <a href="post_message.php">Post message</a>
                 </div>
                 <div class="card">
+                    <a href="contact_message.php">Contact messages</a>
+                </div>
+                <div class="card">
                     <a href="signin.php">User</a>
                 </div>
             </div>

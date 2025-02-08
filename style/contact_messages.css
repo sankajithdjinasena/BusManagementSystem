@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+button,#mailto {
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#mailto{
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #a71d2a;
+}
+
+#mailto:hover{
+    background-color: #a71d2a;
+
+}
+
+form {
+    display: inline-block;
+}
+
+.btn-home {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+}
+
+.btn-home:hover {
+    background-color: #218838;
+}
+
+.message {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    color: green;
+}
+
+.error {
+    text-align: center;
+    color: red;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="number"],
+input[type="time"],
+input[type="date"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+@media(max-width:1200px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+
+    }
+
+    #firstrow{
+        background-color: #000000;
+        border-radius: 5px;   
+        text-align: center;
+        color: white;
+        align-items: center;
+    }
+
+    #firsthead{
+        text-align: center;
+    }
+
+
+    td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td::before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-title) " : ";
+        float: left;
+        text-align: left;
+        font-weight: bold;
+    }
+    form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+}
