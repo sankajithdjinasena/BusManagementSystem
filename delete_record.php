@@ -1,4 +1,6 @@
 <?php include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (isset($_GET['table']) && isset($_GET['id'])) {
     $table = $_GET['table'];
@@ -7,11 +9,11 @@ if (isset($_GET['table']) && isset($_GET['id'])) {
     $table = $conn->real_escape_string($table);
     $id = (int)$id;
 
+
     $allowed_tables = ['bus_owners', 'drivers', 'buses'];
     if (in_array($table, $allowed_tables)) {
         $sql = "DELETE FROM $table WHERE id = $id";
         if ($conn->query($sql) === TRUE) {
-          echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
           echo "<script>
               window.onload = function() {
                   Swal.fire({

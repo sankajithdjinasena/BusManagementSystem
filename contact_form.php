@@ -1,4 +1,6 @@
 <?php include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $conn->real_escape_string($_POST['name']);
@@ -6,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $conn->real_escape_string($_POST['phone']);
     $message = $conn->real_escape_string($_POST['message']);
 
+
     $sql = "INSERT INTO contacts (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-      echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
       echo "<script>
           window.onload = function() {
               Swal.fire({

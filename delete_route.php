@@ -1,7 +1,10 @@
 <?php include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
+
 
     $sql = "DELETE FROM routes WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
@@ -18,7 +21,6 @@ if (isset($_GET['id'])) {
       };
   </script>";
     } else {
-      echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
       echo "<script>
           window.onload = function() {
               Swal.fire({

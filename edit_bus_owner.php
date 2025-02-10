@@ -1,5 +1,7 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -16,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nic = $_POST['nic'];
     $email = $_POST['email'];
 
+
     $update_sql = "UPDATE bus_owners SET name='$name', nic='$nic', email='$email' WHERE id=$id";
 
     if ($conn->query($update_sql)) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         echo "<script>
             window.onload = function() {
                 Swal.fire({
@@ -34,7 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </script>";
         exit();
     } else {
-        echo "Error: " . $conn->error;
+        echo "<script>
+    Swal.fire({
+        title: 'Error!',
+        text: 'Error: " . addslashes($conn->error) . "',
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>";
     }
 }
 ?>

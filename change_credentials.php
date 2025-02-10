@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: signin.php");
@@ -19,21 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {
         $_SESSION['username'] = $username;
         $alert = "<script>
+        window.onload = function() {
             Swal.fire({
                 title: 'Success!',
                 text: 'Credentials updated successfully.',
                 icon: 'success',
                 confirmButtonText: 'OK'
             });
+    };
         </script>";
     } else {
         $alert = "<script>
+        window.onload = function() {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error updating credentials.',
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             });
+    };
         </script>";
     }
 }
@@ -46,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Change Credentials</title>
     <link rel="stylesheet" href="style/change_credential.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 <body>
     <h2>Change Credentials</h2>

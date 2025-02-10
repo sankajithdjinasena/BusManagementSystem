@@ -1,5 +1,7 @@
 <?php
-include 'db_config.php'; 
+include 'db_config.php';     
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 session_start(); 
 
@@ -15,7 +17,6 @@ if (isset($_POST['signin'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['admin_id'] = $user['id'];
             $_SESSION['admin_username'] = $user['username'];
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                 window.onload = function() {
                     Swal.fire({
@@ -28,9 +29,7 @@ if (isset($_POST['signin'])) {
                     });
                 };
             </script>";
-
         } else {
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                 window.onload = function() {
                  Swal.fire({
@@ -42,7 +41,14 @@ if (isset($_POST['signin'])) {
             };
             </script>";        }
     } else {
-        echo "<script>alert('No admin found with this email!');</script>";
+        echo "<script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'No admin found with this email!',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+        </script>";
     }
 }
 ?>

@@ -1,11 +1,12 @@
 <?php include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
     $new_message = $conn->real_escape_string($_POST['new_message']);
 
     $sql = "INSERT INTO admin_messages (message) VALUES ('$new_message')";
     if ($conn->query($sql) === TRUE) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         echo "<script>
             Swal.fire({
                 title: 'Success!',
@@ -32,7 +33,6 @@ if (isset($_GET['delete_id'])) {
 
     $sql = "DELETE FROM admin_messages WHERE id = $delete_id";
     if ($conn->query($sql) === TRUE) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         echo "<script>
             Swal.fire({
                 title: 'Success!',

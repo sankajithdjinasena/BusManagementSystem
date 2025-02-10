@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: signin.php");

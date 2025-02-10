@@ -1,4 +1,7 @@
-<?php include 'db_config.php'; ?>
+<?php include 'db_config.php'; 
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -37,6 +40,8 @@
         $email = $_POST['email'];
         $get_in_location = $_POST['get_in_location'];
 
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
         $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -49,7 +54,6 @@
 
                 $conn->query("UPDATE routes SET available_seats = $new_seats WHERE id = $route_id");
 
-                echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 echo "<script>
                 Swal.fire({
                     title: 'Booking Successful!',
@@ -59,7 +63,6 @@
                 });
                 </script>";
             } else {
-                echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 echo "<script>
                 Swal.fire({
                     title: 'Error!',
@@ -70,7 +73,6 @@
                 </script>";
             }
         } else {
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
             Swal.fire({
                 title: 'Error!',

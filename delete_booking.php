@@ -1,9 +1,10 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $booking_id = $_POST['booking_id'];
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     $sql = "SELECT route_id, seats_booked FROM bookings WHERE id = $booking_id";
     $result = $conn->query($sql);
@@ -31,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 };
                 </script>";
             } else {
-                echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 echo "<script>
                     window.onload = function() {
                         Swal.fire({
@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </script>";
             }
         } else {
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                 window.onload = function() {
                     Swal.fire({

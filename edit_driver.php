@@ -1,5 +1,7 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -17,23 +19,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $license_number = $_POST['license_number'];
     $phone = $_POST['phone'];
 
-
     $update_sql = "UPDATE drivers SET name='$name', nic='$nic', license_number='$license_number',phone='$phone' WHERE id=$id";
 
     if ($conn->query($update_sql)) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-echo "<script>
-window.onload = function() {
-    Swal.fire({
-        title: 'Success!',
-        text: 'Record updated successfully!',
-        icon: 'success',
-        confirmButtonText: 'OK'
-    }).then(() => {
-        window.location.href = 'view_records.php'; // Redirect to the records page
-    });
-    };
-</script>";
+    echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Record updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'view_records.php'; // Redirect to the records page
+        });
+        };
+    </script>";
         exit();
     } else {
         echo "Error: " . $conn->error;
@@ -51,7 +51,7 @@ window.onload = function() {
     <link rel="stylesheet" href="style/view_record.css">
 
 
-    
+
 
 </head>
 <body>

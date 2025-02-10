@@ -1,5 +1,6 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
@@ -11,8 +12,8 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         echo "<script>
+        window.onload = function() {
             Swal.fire({
                 title: 'Success!',
                 text: 'User registered successfully!',
@@ -21,20 +22,26 @@ if (isset($_POST['signup'])) {
             }).then(() => {
                 window.location.href = 'signin.php'; // Redirect to signin page
             });
-        </script>";    } else {
-            echo "<script>
+        };
+        </script>";
+    } else {
+        echo "<script>
+            window.onload = function(){
             Swal.fire({
                 title: 'Error!',
                 text: 'Error: " . addslashes($conn->error) . "',
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             });
-        </script>";    }
+        };
+        </script>";
+    }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
@@ -46,6 +53,7 @@ if (isset($_POST['signup'])) {
 
 
 </head>
+
 <body>
     <nav>
         <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
@@ -53,12 +61,12 @@ if (isset($_POST['signup'])) {
             <a href="home.php">Home</a>
             <a href="schedules.php">Schedules</a>
             <a href="booking.php" id="active">Booking</a>
-            <a href="about.php" >About</a>
+            <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>
-    
+
     <h2>Create an Account</h2>
 
     <form method="POST" action="">
@@ -92,7 +100,7 @@ if (isset($_POST['signup'])) {
                 <h3>Links</h3>
                 <ul>
                     <li><a href="home.php">Home</a></li>
-                    <li><a href="schedules.php" >Schedules</a></li>
+                    <li><a href="schedules.php">Schedules</a></li>
                     <li><a href="booking.php" id="active">Booking</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
@@ -115,4 +123,5 @@ if (isset($_POST['signup'])) {
         </div>
     </footer>
 </body>
+
 </html>

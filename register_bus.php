@@ -1,4 +1,6 @@
-<?php include 'db_config.php'; ?>
+<?php include 'db_config.php'; 
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+?>
 
 <!DOCTYPE html>
 <html>
@@ -117,7 +119,6 @@
 
         if ($conn->query($sql) === TRUE) {
             $bus_id = $conn->insert_id;
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                 Swal.fire({
                     title: 'Success!',

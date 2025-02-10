@@ -1,5 +1,7 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $booking_id = $_POST['booking_id'];
@@ -7,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "SELECT route_id, seats_booked FROM bookings WHERE id = $booking_id";
     $result = $conn->query($sql);
 
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();

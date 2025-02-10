@@ -1,5 +1,7 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 if (isset($_POST['signup'])) {
     $username = $_POST['username'];
@@ -7,7 +9,6 @@ if (isset($_POST['signup'])) {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
 
     if ($password !== $confirm_password) {

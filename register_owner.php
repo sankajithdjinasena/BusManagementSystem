@@ -1,5 +1,6 @@
-<?php include 'db_config.php'; ?>
-
+<?php include 'db_config.php'; 
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+?>
 
 <!DOCTYPE html>
 <html>
@@ -78,10 +79,8 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO bus_owners (name, email, phone,nic) VALUES ('$name', '$email', '$phone','$nic')";
     if ($conn->query($sql) === TRUE) {
-        // Retrieve the last inserted ID
         $owner_id = $conn->insert_id;
 
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 echo "<script>
     Swal.fire({
         title: 'Success!',

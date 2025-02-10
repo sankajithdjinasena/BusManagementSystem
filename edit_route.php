@@ -1,5 +1,7 @@
 <?php
 include 'db_config.php';
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
 
 $route_id = $_GET['id'];
 

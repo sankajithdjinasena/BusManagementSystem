@@ -1,5 +1,6 @@
 <?php
 include 'db_config.php'; 
+echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
 session_start(); 
 
@@ -15,7 +16,6 @@ if (isset($_POST['signin'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
                 Swal.fire({
                     title: 'Success!',
@@ -26,7 +26,6 @@ if (isset($_POST['signin'])) {
                     window.location.href = 'dashboard.php'; // Redirect to the dashboard
                 });
             </script>";        } else {
-                echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 echo "<script>
                     Swal.fire({
                         title: 'Error!',
