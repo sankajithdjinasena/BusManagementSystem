@@ -81,15 +81,28 @@ if (isset($_POST['submit'])) {
         // Retrieve the last inserted ID
         $owner_id = $conn->insert_id;
 
-        echo "<script>
-            alert('Bus owner registered successfully!\\nOwner ID: $owner_id');
-            window.location.href = 'register_owner.php'; // Redirect to bus owners page
-          </script>";
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+echo "<script>
+    Swal.fire({
+        title: 'Success!',
+        text: 'Bus owner registered successfully!\\nOwner ID: $owner_id',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        window.location.href = 'register_owner.php'; // Redirect to bus owners page
+    });
+</script>";
     } else {
         echo "<script>
-            alert('Error: " . addslashes($conn->error) . "');
-            window.location.href = 'register_owner.php'; // Redirect back to registration page
-          </script>";
+    Swal.fire({
+        title: 'Error!',
+        text: 'Error: " . addslashes($conn->error) . "',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+    }).then(() => {
+        window.location.href = 'register_owner.php'; // Redirect back to registration page
+    });
+</script>";
     }
 }
 ?>

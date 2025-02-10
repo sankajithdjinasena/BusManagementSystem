@@ -19,6 +19,8 @@
         <input type="text" name="customer_phone" required autocomplete="off">
         <label>Your Email:</label>
         <input type="text" name="email" required autocomplete="off">
+        <label>Get in location</label>
+        <input type="text" name="get_in_location" required autocomplete="off">
         <label>Number of Seats:</label>
         <input type="number" name="seats" required>
         <input type="submit" name="submit" value="Book Route">
@@ -31,23 +33,55 @@
         $customer_phone = $_POST['customer_phone'];
         $seats = $_POST['seats'];
         $email = $_POST['email'];
+        $get_in_location = $_POST['get_in_location'];
 
         $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if ($row['available_seats'] >= $seats) {
                 $new_seats = $row['available_seats'] - $seats;
-                $conn->query("INSERT INTO bookings (route_id, customer_name, customer_phone,email, seats_booked) 
-                              VALUES ($route_id, '$customer_name', '$customer_phone','$email', $seats)");
+                $conn->query("INSERT INTO bookings (route_id, customer_name, customer_phone,email, seats_booked,get_in_location) 
+                              VALUES ($route_id, '$customer_name', '$customer_phone','$email', $seats,'$get_in_location')");
                 $booking_id = $conn->insert_id;
                 $conn->query("UPDATE routes SET available_seats = $new_seats WHERE id = $route_id");
 
-                echo "<script>alert('Booking successful! Your Booking ID is: " . $booking_id . "');</script>";
-            } else {
-                echo "<script>alert('Not enough seats available!');</script>";
+                echo "<script>
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Booking successful! Your Booking ID is: $booking_id',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'your_next_page.php'; // Change this URL to the next page
+                    });
+                };
+            </script>";
+        } else {
+            echo "<script>
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Not enough seats available!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            };
+        </script>";
             }
         } else {
-            echo "<script>alert('Invalid Route ID!');</script>";
+            echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Not enough seats available!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'your_redirect_page.php'; // Change to the page you want to redirect
+        });
+    };
+</script>";
         }
     }
     ?>

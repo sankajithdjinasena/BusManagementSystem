@@ -15,10 +15,32 @@ if (isset($_POST['signin'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['admin_id'] = $user['id'];
             $_SESSION['admin_username'] = $user['username'];
-            echo "<script>alert('Admin login successful!'); window.location.href = 'admin_dashboard.php';</script>";
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+            echo "<script>
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Admin login successful!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'admin_dashboard.php'; // Redirect after clicking OK
+                    });
+                };
+            </script>";
+
         } else {
-            echo "<script>alert('Incorrect password!');</script>";
-        }
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+            echo "<script>
+                window.onload = function() {
+                 Swal.fire({
+                    title: 'Error!',
+                    text: 'Incorrect password!',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+            };
+            </script>";        }
     } else {
         echo "<script>alert('No admin found with this email!');</script>";
     }
@@ -103,4 +125,6 @@ if (isset($_POST['signin'])) {
         </div>
     </footer>
 </body>
+
+
 </html>

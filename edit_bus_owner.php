@@ -19,8 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_sql = "UPDATE bus_owners SET name='$name', nic='$nic', email='$email' WHERE id=$id";
 
     if ($conn->query($update_sql)) {
-        echo "Record updated successfully!";
-        header("Location: view_records.php");
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+        echo "<script>
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Record updated successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'view_records.php'; // Redirect to the records page
+                });
+            };
+        </script>";
         exit();
     } else {
         echo "Error: " . $conn->error;
@@ -34,8 +45,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Bus Owner</title>
     <link rel="stylesheet" href="style/form.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-    <link rel="stylesheet" href="style/view_records.css">
-    <link rel="stylesheet" href="style/registers.css">
+    <link rel="stylesheet" href="style/view_record.css">
+    <link rel="stylesheet" href="style/register.css">
+
+    <style>
+    .btn-home {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+}
+.btn-home:hover {
+    background-color: #218838;
+}
+    </style>
 </head>
 <body>
     <h2>Edit Bus Owner</h2>
@@ -50,9 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="email" name="email" value="<?php echo $row['email']; ?>" required><br>
 
         <button type="submit">Update</button>
-        <a href="view_records.php">Cancel</a>
+
     </form>
     <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+
 
 </body>
 </html>

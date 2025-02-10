@@ -71,8 +71,7 @@
                             <td data-title='Bus Number'>{$row['bus_number']}</td>
                             <td data-title='Available Seats'>{$row['available_seats']}</td>
                             <td data-title='Actions'>
-                                                            <button><a href='edit_route.php?id={$row['id']}'>Edit</a></button>
-
+                                <button><a href='edit_route.php?id={$row['id']}'>Edit</a></button>
                                 <button><a href='delete_route.php?id={$row['id']}'>Delete</a></button>
                             </td>
                           </tr>";

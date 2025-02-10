@@ -9,15 +9,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO contacts (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>
-                alert('Thank you! Your message has been received.');
-                window.location.href = 'contact.php'; // Redirect to the bookings page
-              </script>";
-    } else {
-        echo "<script>
-        alert('Invalid request.');
-        window.location.href = 'contact.php'; // Redirect to the bookings page
+      echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+      echo "<script>
+          window.onload = function() {
+              Swal.fire({
+                  title: 'Thank You!',
+                  text: 'Your message has been received.',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+              }).then(() => {
+                  window.location.href = 'contact.php'; // Redirect to the contact page
+              });
+          };
       </script>";
+    } else {
+      echo "<script>
+      window.onload = function() {
+          Swal.fire({
+              title: 'Error!',
+              text: 'Invalid request.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+          }).then(() => {
+              window.location.href = 'contact.php'; // Redirect to the contact page
+          });
+      };
+  </script>";
     }
 }
 

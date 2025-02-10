@@ -117,17 +117,30 @@
 
         if ($conn->query($sql) === TRUE) {
             $bus_id = $conn->insert_id;
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
-            alert('Bus registered successfully! Bus ID: " . $bus_id . "');
-            window.location.href = 'view_records.php'; 
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Bus registered successfully! Bus ID: " . $bus_id . "',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'view_records.php'; // Redirect to the records page
+                });
             </script>";
         } else {
             echo "<script>
-            alert('Error: " . $conn->error . "');
-            window.location.href = 'register_bus.php'; 
-            </script>";
-        }
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            }).then(() => {
+                window.location.href = 'register_bus.php'; // Redirect to the register bus page
+            });
+        </script>";
     }
+}
     ?>
 </body>
 

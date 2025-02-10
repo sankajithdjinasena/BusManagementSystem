@@ -21,8 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_sql = "UPDATE buses SET owner_id='$owner_id', driver_id='$driver_id', route='$route',capacity='$route' WHERE id=$id";
 
     if ($conn->query($update_sql)) {
-        echo "Record updated successfully!";
-        header("Location: view_records.php");
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Record updated successfully!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'view_records.php'; // Redirect to the records page
+        });
+    };
+</script>";
         exit();
     } else {
         echo "Error: " . $conn->error;
@@ -36,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Bus </title>
     <link rel="stylesheet" href="style/form.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-    <link rel="stylesheet" href="style/registers.css">
-    <link rel="stylesheet" href="style/view_records.css">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/view_record.css">
 
 </head>
 <body>
@@ -56,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="number" name="capacity" value="<?php echo $row['capacity']; ?>" required><br>
 
         <button type="submit">Update</button>
-        <a href="view_records.php">Cancel</a>
+        <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
     </form>
 
     <h2>Bus Owners</h2>

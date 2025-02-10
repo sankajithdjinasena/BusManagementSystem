@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Edit Route</title>
     <link rel="stylesheet" href="style/registers.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-    <link rel="stylesheet" href="style/registers.css">
-    <link rel="stylesheet" href="style/view_records.css">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/view_record.css">
 
 
 </head>

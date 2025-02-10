@@ -7,24 +7,66 @@ if (isset($_POST['signup'])) {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+
+
     if ($password !== $confirm_password) {
-        echo "<script>alert('Passwords do not match!');</script>";
+        echo "<script>
+        window.onload = function() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Passwords do not match!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        };
+    </script>";
+
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "<script>alert('Email already exists!');</script>";
+            echo "<script>
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Warning!',
+                    text: 'Email already exists!',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            };
+        </script>";
         } else {
             $sql = "INSERT INTO users (username, email, password, is_admin) 
                     VALUES ('$username', '$email', '$hashed_password', 1)";
 
             if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('Admin account created successfully!'); window.location.href = 'admin_signin.php';</script>";
-            } else {
-                echo "<script>alert('Error: " . addslashes($conn->error) . "');</script>";
-            }
+                echo "<script>
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Admin account created successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'admin_signin.php'; // Redirect after OK
+                    });
+                };
+            </script>";            
+        } 
+            else {
+                echo "<script>
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error: " . addslashes($conn->error) . "',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                };
+            </script>";            }
         }
     }
 }

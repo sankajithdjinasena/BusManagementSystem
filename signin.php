@@ -15,13 +15,39 @@ if (isset($_POST['signin'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            echo "<script>alert('Login successful!'); window.location.href = 'dashboard.php';</script>";
-        } else {
-            echo "<script>alert('Incorrect password!'); window.location.href = 'signin.php';</script>";
-        }
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+            echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login successful!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'dashboard.php'; // Redirect to the dashboard
+                });
+            </script>";        } else {
+                echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+                echo "<script>
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Incorrect password!',
+                        icon: 'error',
+                        confirmButtonText: 'Try Again'
+                    }).then(() => {
+                        window.location.href = 'signin.php'; // Redirect back to the signin page
+                    });
+                </script>";        }
     } else {
-        echo "<script>alert('No user found with this email!'); < window.location.href = 'signin.php';/script>";
-    }
+        echo "<script>
+        Swal.fire({
+            title: 'Error!',
+            text: 'No user found with this email!',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+        }).then(() => {
+            window.location.href = 'signin.php'; // Redirect back to the signin page
+        });
+    </script>";    }
 }
 ?>
 

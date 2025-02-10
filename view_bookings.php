@@ -22,12 +22,13 @@
                 <th>Time</th>
                 <th>Departure</th>
                 <th>Arrival</th>
+                <th>Get in Location</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            $result = $conn->query("SELECT bookings.id, customer_name, customer_phone, seats_booked, date, time, departure_place, arrival_place,email 
+            $result = $conn->query("SELECT bookings.id, customer_name, customer_phone, seats_booked, date, time, departure_place, arrival_place,email,get_in_location 
                                     FROM bookings 
                                     JOIN routes ON bookings.route_id = routes.id");
             if ($result->num_rows > 0) {
@@ -42,6 +43,7 @@
                             <td data-title='Time'>{$row['time']}</td>
                             <td data-title='Departure'>{$row['departure_place']}</td>
                             <td data-title='Arrival'>{$row['arrival_place']}</td>
+                            <td data-title='Get in Location'>{$row['get_in_location']}</td>
                             <td data-title='Actions'>
                                 <form action='delete_booking.php' method='POST'>
                                     <input type='hidden' name='booking_id' value='{$row['id']}'>

@@ -35,14 +35,14 @@
             <?php
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reply_id'])) {
                 $reply_id = intval($_POST['reply_id']);
-                $update_sql = "UPDATE contacts SET replied='Replied' WHERE id=$reply_id";
+                $update_sql = "UPDATE contacts SET replied='Replied' WHERE id=$reply_id" ;
                 $conn->query($update_sql);
             }
 
             $filter_phone = isset($_GET['filter_phone']) ? $_GET['filter_phone'] : '';
             $filter_email = isset($_GET['filter_email']) ? $_GET['filter_email'] : '';
 
-            $sql = "SELECT id, name, email, phone, message, replied  FROM contacts";
+            $sql = "SELECT id, name, email, phone, message, replied  FROM contacts ORDER BY id DESC";
             $conditions = [];
 
             if (!empty($filter_phone)) {

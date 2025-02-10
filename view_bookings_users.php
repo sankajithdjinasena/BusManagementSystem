@@ -32,6 +32,7 @@
                 <th>Time</th>
                 <th>Departure</th>
                 <th>Arrival</th>
+                <th>Get In Location</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -41,7 +42,7 @@
                 $filter_phone = $conn->real_escape_string($_GET['filter_phone']);
                 $filter_email = $conn->real_escape_string($_GET['filter_email']);
 
-                $sql = "SELECT bookings.id, customer_name, customer_phone, seats_booked, date, time, departure_place, arrival_place, email 
+                $sql = "SELECT bookings.id, customer_name, customer_phone, seats_booked, date, time, departure_place, arrival_place, email,get_in_location 
                         FROM bookings 
                         JOIN routes ON bookings.route_id = routes.id
                         WHERE customer_phone = '$filter_phone' AND email = '$filter_email'";
@@ -59,6 +60,7 @@
                                 <td data-title='Time'>{$row['time']}</td>
                                 <td data-title='Departure'>{$row['departure_place']}</td>
                                 <td data-title='Arrival'>{$row['arrival_place']}</td>
+                                <td data-title='Get In Location'>{$row['get_in_location']}</td>
                                 <td data-title='Actions'>
                                     <form action='delete_booking_user.php' method='POST'>
                                         <input type='hidden' name='booking_id' value='{$row['id']}'>
@@ -68,10 +70,10 @@
                               </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='10' class='message'>No bookings found for the provided phone number and email.</td></tr>";
+                    echo "<tr><td colspan='11' class='message'>No bookings found for the provided phone number and email.</td></tr>";
                 }
             } else {
-                echo "<tr><td colspan='10' class='message'>Please enter both phone number and email to view bookings.</td></tr>";
+                echo "<tr><td colspan='11' class='message'>Please enter both phone number and email to view bookings.</td></tr>";
             }
             ?>
         </tbody>

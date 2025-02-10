@@ -11,10 +11,25 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('User registered successfully!'); window.location.href = 'signin.php';</script>";
-    } else {
-        echo "<script>alert('Error: " . $conn->error . "');</script>";
-    }
+        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+        echo "<script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'User registered successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'signin.php'; // Redirect to signin page
+            });
+        </script>";    } else {
+            echo "<script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+        </script>";    }
 }
 ?>
 

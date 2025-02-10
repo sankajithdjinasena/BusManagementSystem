@@ -58,7 +58,6 @@ nav .pages a:hover {
     background-color: rgb(17, 17, 17);
     box-shadow: 0 0 8px rgb(243, 243, 243);
     color: #fff;
-    transform: scale(1.05);
 }
 
 #adminbtn {

@@ -22,6 +22,12 @@ if (!isset($_SESSION['user_id'])) {
 
 </head>
 
+<style>
+    #adminbtn:hover{
+        transform: scale(1);
+    }
+</style>
+
 <body>
     <nav>
         <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>

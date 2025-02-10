@@ -7,6 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+$alert = ""; 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -16,9 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($stmt->execute()) {
         $_SESSION['username'] = $username;
-        $success = "Credentials updated successfully.";
+        $alert = "<script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Credentials updated successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>";
     } else {
-        $error = "Error updating credentials.";
+        $alert = "<script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error updating credentials.',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+        </script>";
     }
 }
 ?>
@@ -30,12 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Change Credentials</title>
     <link rel="stylesheet" href="style/change_credential.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 <body>
     <h2>Change Credentials</h2>
-    <?php if (isset($success)) echo "<p style='color: green;'>$success</p>"; ?>
-    <?php if (isset($error)) echo "<p style='color: red;'>$error</p>"; ?>
+    
     <form method="POST" action="">
         <label for="username">New Username:</label>
         <input type="text" name="username" id="username" value="<?php echo $_SESSION['username']; ?>" required>
@@ -44,5 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Update</button>
     </form>
     <a href="dashboard.php" class="btn-home">Go to Dashboard</a>
+
+    <?php if (!empty($alert)) echo $alert; ?> 
+
 </body>
 </html>

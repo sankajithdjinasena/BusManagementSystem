@@ -155,6 +155,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <small>Phone : <?php echo $row['phone']; ?></small><br>
                         <small>Posted on: <?php echo $row['created_at']; ?></small>
                     </li>
+                    <br>
                 <?php } ?>
             </ul>
         </div>

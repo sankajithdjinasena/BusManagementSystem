@@ -42,15 +42,28 @@
         
         if ($conn->query($sql) === TRUE) {
             $driver_id = $conn->insert_id;  
-            echo "<script>
-            alert('Driver registered successfully! Driver ID: " . $driver_id . "');
-            window.location.href = 'view_records.php'; 
-            </script>";
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+echo "<script>
+    Swal.fire({
+        title: 'Success!',
+        text: 'Driver registered successfully! Driver ID: " . $driver_id . "',
+        icon: 'success',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        window.location.href = 'view_records.php'; // Redirect to the records page
+    });
+</script>";
         } else {
             echo "<script>
-            alert('Error: " . $conn->error . "');
-            window.location.href = 'register_driver.php'; 
-            </script>";
+    Swal.fire({
+        title: 'Error!',
+        text: 'Error: " . addslashes($conn->error) . "',
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+    }).then(() => {
+        window.location.href = 'register_driver.php'; // Redirect to the register driver page
+    });
+</script>";
         }
     }
     ?>

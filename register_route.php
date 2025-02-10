@@ -21,6 +21,9 @@
         <label>Departure Place:</label>
         <input type="text" name="departure_place" required>
         
+        <label>City Passed</label>
+        <input type="text" name="city_passed" required>
+
         <label>Arrival Place:</label>
         <input type="text" name="arrival_place" required>
         
@@ -81,20 +84,34 @@
         $duration = $_POST['duration'];
         $bus_id = $_POST['bus_id'];
         $total_seats = $_POST['total_seats'];
+        $city_passed = $_POST['city_passed'];
 
-        $sql = "INSERT INTO routes (date, time, departure_place, arrival_place, duration, bus_id, total_seats, available_seats) 
-                VALUES ('$date', '$time', '$departure_place', '$arrival_place', '$duration', '$bus_id', '$total_seats', '$total_seats')";
+        $sql = "INSERT INTO routes (date, time, departure_place, arrival_place, duration, bus_id, total_seats, available_seats,city_passed) 
+                VALUES ('$date', '$time', '$departure_place', '$arrival_place', '$duration', '$bus_id', '$total_seats', '$total_seats','$city_passed')";
         
         if ($conn->query($sql) === TRUE) {
             $route_id = $conn->insert_id; 
+            echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<script>
-            alert('Route registered successfully! Route ID: " . $route_id . "');
-            window.location.href = 'view_routes.php'; 
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Route registered successfully! Route ID: " . $route_id . "',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'view_routes.php'; // Redirect to the routes page
+                });
             </script>";
         } else {
             echo "<script>
-            alert('Error: " . addslashes($conn->error) . "');
-            window.location.href = 'register_route.php'; 
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error: " . addslashes($conn->error) . "',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                }).then(() => {
+                    window.location.href = 'register_route.php'; // Redirect back to registration page
+                });
             </script>";
         }
     }
