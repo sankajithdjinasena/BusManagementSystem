@@ -56,7 +56,7 @@
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'your_next_page.php'; // Change this URL to the next page
+                        window.location.href = 'your_next_page.php';
                     });
                 };
             </script>";
@@ -74,17 +74,17 @@
             }
         } else {
             echo "<script>
-    window.onload = function() {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Not enough seats available!',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        }).then(() => {
-            window.location.href = 'your_redirect_page.php'; // Change to the page you want to redirect
-        });
-    };
-</script>";
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Not enough seats available!',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'your_redirect_page.php';
+                });
+            };
+        </script>";
         }
     }
     ?>

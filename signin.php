@@ -23,7 +23,7 @@ if (isset($_POST['signin'])) {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    window.location.href = 'dashboard.php'; // Redirect to the dashboard
+                    window.location.href = 'dashboard.php'; 
                 });
             </script>";        } else {
                 echo "<script>
@@ -33,7 +33,7 @@ if (isset($_POST['signin'])) {
                         icon: 'error',
                         confirmButtonText: 'Try Again'
                     }).then(() => {
-                        window.location.href = 'signin.php'; // Redirect back to the signin page
+                        window.location.href = 'signin.php'; 
                     });
                 </script>";        }
     } else {
@@ -44,7 +44,7 @@ if (isset($_POST['signin'])) {
             icon: 'error',
             confirmButtonText: 'Try Again'
         }).then(() => {
-            window.location.href = 'signin.php'; // Redirect back to the signin page
+            window.location.href = 'signin.php'; 
         });
     </script>";    }
 }

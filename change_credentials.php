@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 icon: 'success',
                 confirmButtonText: 'OK'
             });
-    };
+            };
         </script>";
     } else {
         $alert = "<script>
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             });
-    };
+        };
         </script>";
     }
 }

@@ -6,13 +6,11 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Fetch the bus owner details
     $sql = "SELECT * FROM drivers WHERE id = $id";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $nic = $_POST['nic'];

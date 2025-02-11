@@ -52,7 +52,7 @@ if (isset($_POST['signup'])) {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'admin_signin.php'; // Redirect after OK
+                        window.location.href = 'admin_signin.php';
                     });
                 };
             </script>";            
@@ -67,7 +67,8 @@ if (isset($_POST['signup'])) {
                         confirmButtonText: 'OK'
                     });
                 };
-            </script>";            }
+            </script>";            
+            }
         }
     }
 }

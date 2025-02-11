@@ -62,7 +62,6 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                         <td data-title='Name'>{$row['name']}</td>
                         <td data-title='NIC'>{$row['nic']}</td>
                         <td data-title='Email'>{$row['email']}</td>
-                        
                       </tr>";
             }
             ?>
@@ -81,28 +80,28 @@ if (isset($_POST['submit'])) {
     if ($conn->query($sql) === TRUE) {
         $owner_id = $conn->insert_id;
 
-echo "<script>
-    Swal.fire({
-        title: 'Success!',
-        text: 'Bus owner registered successfully!\\nOwner ID: $owner_id',
-        icon: 'success',
-        confirmButtonText: 'OK'
-    }).then(() => {
-        window.location.href = 'register_owner.php'; // Redirect to bus owners page
-    });
-</script>";
+        echo "<script>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Bus owner registered successfully!\\nOwner ID: $owner_id',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'register_owner.php';
+            });
+        </script>";
     } else {
         echo "<script>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Error: " . addslashes($conn->error) . "',
-        icon: 'error',
-        confirmButtonText: 'Try Again'
-    }).then(() => {
-        window.location.href = 'register_owner.php'; // Redirect back to registration page
-    });
-</script>";
-    }
+        Swal.fire({
+            title: 'Error!',
+            text: 'Error: " . addslashes($conn->error) . "',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+        }).then(() => {
+            window.location.href = 'register_owner.php'; 
+        });
+    </script>";
+        }
 }
 ?>
 

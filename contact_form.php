@@ -12,18 +12,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO contacts (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-      echo "<script>
-          window.onload = function() {
-              Swal.fire({
-                  title: 'Thank You!',
-                  text: 'Your message has been received.',
-                  icon: 'success',
-                  confirmButtonText: 'OK'
-              }).then(() => {
-                  window.location.href = 'contact.php'; // Redirect to the contact page
-              });
-          };
-      </script>";
+        echo "<script>
+        window.onload = function() {
+            Swal.fire({
+                title: 'Thank You!',
+                text: 'Your message has been received.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'contact.php';
+            });
+        };
+    </script>";
     } else {
       echo "<script>
       window.onload = function() {
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               icon: 'error',
               confirmButtonText: 'OK'
           }).then(() => {
-              window.location.href = 'contact.php'; // Redirect to the contact page
+              window.location.href = 'contact.php'; 
           });
       };
   </script>";

@@ -21,29 +21,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($conn->query($delete_sql) === TRUE) {
                 echo "<script>
                 window.onload = function() {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Booking deleted successfully and available seats updated.',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'view_bookings.php'; // Redirect to the bookings page
-                });
-                };
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Booking deleted successfully and available seats updated.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'view_bookings.php';
+                    });
+                    };
                 </script>";
             } else {
                 echo "<script>
-                    window.onload = function() {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Error deleting booking: " . addslashes($conn->error) . "',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            window.location.href = 'view_bookings.php'; // Redirect to the bookings page
-                        });
-                    };
-                </script>";
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Error deleting booking: " . addslashes($conn->error) . "',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'view_bookings.php';
+                    });
+                };
+            </script>";
             }
         } else {
             echo "<script>
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         icon: 'error',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'view_bookings.php'; // Redirect to the bookings page
+                        window.location.href = 'view_bookings.php';
                     });
                 };
             </script>";
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    window.location.href = 'view_bookings.php'; // Redirect to the bookings page
+                    window.location.href = 'view_bookings.php';
                 });
             };
         </script>";
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 icon: 'error',
                 confirmButtonText: 'OK'
             }).then(() => {
-                window.location.href = 'view_bookings.php'; // Redirect to the bookings page
+                window.location.href = 'view_bookings.php';
             });
         };
     </script>";

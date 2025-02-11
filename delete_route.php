@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
 
     $sql = "DELETE FROM routes WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-      echo "<script>
+        echo "<script>
       window.onload = function() {
           Swal.fire({
               title: 'Success!',
@@ -16,12 +16,12 @@ if (isset($_GET['id'])) {
               icon: 'success',
               confirmButtonText: 'OK'
           }).then(() => {
-              window.location.href = 'view_routes.php'; // Redirect to the routes page
+              window.location.href = 'view_routes.php'; 
           });
       };
   </script>";
     } else {
-      echo "<script>
+        echo "<script>
           window.onload = function() {
               Swal.fire({
                   title: 'Error!',
@@ -29,13 +29,13 @@ if (isset($_GET['id'])) {
                   icon: 'error',
                   confirmButtonText: 'OK'
               }).then(() => {
-                  window.location.href = 'view_routes.php'; // Redirect to the routes page
+                  window.location.href = 'view_routes.php'; 
               });
           };
       </script>";
     }
 } else {
-  echo "<script>
+    echo "<script>
   window.onload = function() {
       Swal.fire({
           title: 'Error!',
@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
           icon: 'error',
           confirmButtonText: 'OK'
       }).then(() => {
-          window.location.href = 'view_routes.php'; // Redirect to the routes page
+          window.location.href = 'view_routes.php'; 
       });
   };
 </script>";

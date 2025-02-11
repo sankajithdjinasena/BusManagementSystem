@@ -25,11 +25,12 @@ if (isset($_POST['signin'])) {
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'admin_dashboard.php'; // Redirect after clicking OK
+                        window.location.href = 'admin_dashboard.php';
                     });
                 };
             </script>";
-        } else {
+        } 
+        else {
             echo "<script>
                 window.onload = function() {
                  Swal.fire({
@@ -39,7 +40,8 @@ if (isset($_POST['signin'])) {
                     confirmButtonText: 'Try Again'
                 });
             };
-            </script>";        }
+            </script>";        
+        }
     } else {
         echo "<script>
             Swal.fire({

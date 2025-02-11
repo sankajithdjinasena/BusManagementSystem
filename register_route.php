@@ -95,26 +95,26 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         if ($conn->query($sql) === TRUE) {
             $route_id = $conn->insert_id; 
             echo "<script>
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Route registered successfully! Route ID: " . $route_id . "',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'view_routes.php'; // Redirect to the routes page
-                });
-            </script>";
+            Swal.fire({
+                title: 'Success!',
+                text: 'Route registered successfully! Route ID: " . $route_id . "',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'view_routes.php';
+            });
+        </script>";
         } else {
             echo "<script>
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Error: " . addslashes($conn->error) . "',
-                    icon: 'error',
-                    confirmButtonText: 'Try Again'
-                }).then(() => {
-                    window.location.href = 'register_route.php'; // Redirect back to registration page
-                });
-            </script>";
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            }).then(() => {
+                window.location.href = 'register_route.php';
+            });
+        </script>";
         }
     }
     ?>

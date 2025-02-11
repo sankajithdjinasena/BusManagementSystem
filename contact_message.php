@@ -44,7 +44,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             $filter_phone = isset($_GET['filter_phone']) ? $_GET['filter_phone'] : '';
             $filter_email = isset($_GET['filter_email']) ? $_GET['filter_email'] : '';
 
-            $sql = "SELECT id, name, email, phone, message, replied  FROM contacts ORDER BY id DESC";
+            $sql = "SELECT id, name, email, phone, message, replied FROM contacts";
             $conditions = [];
 
             if (!empty($filter_phone)) {
@@ -57,6 +57,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             if (count($conditions) > 0) {
                 $sql .= " WHERE " . implode(' AND ', $conditions);
             }
+
+            $sql .= " ORDER BY id DESC"; 
 
             $result = $conn->query($sql);
 

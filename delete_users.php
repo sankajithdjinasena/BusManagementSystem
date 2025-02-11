@@ -7,43 +7,43 @@ if (isset($_GET['id'])) {
 
     $sql = "DELETE FROM users WHERE id = $id";
     if ($conn->query($sql) === TRUE) {
-      echo "<script>
-      window.onload = function() {
-          Swal.fire({
-              title: 'Success!',
-              text: 'User deleted successfully.',
-              icon: 'success',
-              confirmButtonText: 'OK'
-          }).then(() => {
-              window.location.href = 'view_users.php'; // Redirect to the users page
-          });
-      };
-  </script>";
+        echo "<script>
+        window.onload = function() {
+            Swal.fire({
+                title: 'Success!',
+                text: 'User deleted successfully.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'view_users.php'; 
+            });
+        };
+    </script>";
     } else {
-      echo "<script>
-      window.onload = function() {
-          Swal.fire({
-              title: 'Error!',
-              text: 'Error deleting route: " . addslashes($conn->error) . "',
-              icon: 'error',
-              confirmButtonText: 'OK'
-          }).then(() => {
-              window.location.href = 'view_users.php'; // Redirect to the users page
-          });
-      };
-  </script>";
+        echo "<script>
+        window.onload = function() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error deleting route: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'view_users.php'; 
+            });
+        };
+    </script>";
     }
 } else {
-  echo "<script>
-      window.onload = function() {
-          Swal.fire({
-              title: 'Error!',
-              text: 'Missing user ID.',
-              icon: 'error',
-              confirmButtonText: 'OK'
-          }).then(() => {
-              window.location.href = 'view_users.php'; // Redirect to the users page
-          });
-      };
-  </script>";
+    echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Missing user ID.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'view_users.php'; 
+        });
+    };
+</script>";
 }

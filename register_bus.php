@@ -126,7 +126,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    window.location.href = 'view_records.php'; // Redirect to the records page
+                    window.location.href = 'view_records.php'; 
                 });
             </script>";
         } else {
@@ -137,7 +137,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             }).then(() => {
-                window.location.href = 'register_bus.php'; // Redirect to the register bus page
+                window.location.href = 'register_bus.php'; 
             });
         </script>";
     }

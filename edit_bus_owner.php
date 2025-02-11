@@ -6,13 +6,11 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Fetch the bus owner details
     $sql = "SELECT * FROM bus_owners WHERE id = $id";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $nic = $_POST['nic'];
@@ -23,27 +21,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($conn->query($update_sql)) {
         echo "<script>
-            window.onload = function() {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Record updated successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'view_records.php'; // Redirect to the records page
-                });
-            };
-        </script>";
+        window.onload = function() {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Record updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'view_records.php'; 
+            });
+        };
+    </script>";
         exit();
     } else {
         echo "<script>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Error: " . addslashes($conn->error) . "',
-        icon: 'error',
-        confirmButtonText: 'OK'
-    });
-</script>";
+        window.onload = function() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        };
+        </script>";
     }
 }
 ?>
@@ -82,13 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="POST">
         <label>Name:</label>
         <input type="text" name="name" value="<?php echo $row['name']; ?>" required><br>
-
         <label>NIC:</label>
         <input type="text" name="nic" value="<?php echo $row['nic']; ?>" required><br>
-
         <label>Email:</label>
         <input type="email" name="email" value="<?php echo $row['email']; ?>" required><br>
-
         <button type="submit">Update</button>
 
     </form>

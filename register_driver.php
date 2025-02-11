@@ -45,27 +45,27 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         
         if ($conn->query($sql) === TRUE) {
             $driver_id = $conn->insert_id;  
-echo "<script>
-    Swal.fire({
-        title: 'Success!',
-        text: 'Driver registered successfully! Driver ID: " . $driver_id . "',
-        icon: 'success',
-        confirmButtonText: 'OK'
-    }).then(() => {
-        window.location.href = 'view_records.php'; // Redirect to the records page
-    });
-</script>";
+            echo "<script>
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Driver registered successfully! Driver ID: " . $driver_id . "',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href = 'view_records.php'; 
+                });
+            </script>";
         } else {
             echo "<script>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Error: " . addslashes($conn->error) . "',
-        icon: 'error',
-        confirmButtonText: 'Try Again'
-    }).then(() => {
-        window.location.href = 'register_driver.php'; // Redirect to the register driver page
-    });
-</script>";
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            }).then(() => {
+                window.location.href = 'register_driver.php'; 
+            });
+        </script>";
         }
     }
     ?>

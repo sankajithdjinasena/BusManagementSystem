@@ -21,71 +21,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $delete_sql = "DELETE FROM bookings WHERE id = $booking_id";
             if ($conn->query($delete_sql) === TRUE) {
                 echo "<script>
-                    window.onload = function() {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Booking deleted successfully and available seats updated.',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            window.location.href = 'view_bookings_users.php';
-                        });
-                    };
-                </script>";
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Booking deleted successfully and available seats updated.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'view_bookings_users.php';
+                    });
+                };
+            </script>";
             } else {
                 echo "<script>
-                    window.onload = function() {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Error deleting booking: " . addslashes($conn->error) . "',
-                            icon: 'error',
-                            confirmButtonText: 'Try Again'
-                        }).then(() => {
-                            window.location.href = 'view_bookings_users.php';
-                        });
-                    };
-                </script>";
-            }
-        } else {
-            echo "<script>
                 window.onload = function() {
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Error updating available seats: " . addslashes($conn->error) . "',
+                        text: 'Error deleting booking: " . addslashes($conn->error) . "',
                         icon: 'error',
-                        confirmButtonText: 'OK'
+                        confirmButtonText: 'Try Again'
                     }).then(() => {
-                            window.location.href = 'view_bookings_users.php';
-                        });
+                        window.location.href = 'view_bookings_users.php';
+                    });
                 };
             </script>";
-        }
-    } else {
-        echo "<script>
+            }
+        } else {
+            echo "<script>
             window.onload = function() {
                 Swal.fire({
                     title: 'Error!',
-                    text: 'Booking not found.',
+                    text: 'Error updating available seats: " . addslashes($conn->error) . "',
                     icon: 'error',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                            window.location.href = 'view_bookings_users.php';
-                        });
+                        window.location.href = 'view_bookings_users.php';
+                    });
             };
         </script>";
-    }
-} else {
-    echo "<script>
+        }
+    } else {
+        echo "<script>
         window.onload = function() {
             Swal.fire({
-                title: 'Invalid Request!',
-                text: 'Please make a valid request.',
+                title: 'Error!',
+                text: 'Booking not found.',
                 icon: 'error',
                 confirmButtonText: 'OK'
             }).then(() => {
-                window.location.href = 'view_bookings_users.php';
-            });
+                        window.location.href = 'view_bookings_users.php';
+                    });
         };
     </script>";
+    }
+} else {
+    echo "<script>
+    window.onload = function() {
+        Swal.fire({
+            title: 'Invalid Request!',
+            text: 'Please make a valid request.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = 'view_bookings_users.php';
+        });
+    };
+</script>";
 }
 ?>

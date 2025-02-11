@@ -20,7 +20,7 @@ if (isset($_POST['signup'])) {
                 icon: 'success',
                 confirmButtonText: 'OK'
             }).then(() => {
-                window.location.href = 'signin.php'; // Redirect to signin page
+                window.location.href = 'signin.php'; 
             });
         };
         </script>";

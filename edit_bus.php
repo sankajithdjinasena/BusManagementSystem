@@ -6,13 +6,11 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Fetch the bus owner details
     $sql = "SELECT * FROM buses WHERE id = $id";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $owner_id = $_POST['owner_id'];
     $driver_id = $_POST['driver_id'];
@@ -24,27 +22,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($conn->query($update_sql)) {
         echo "<script>
-            window.onload = function() {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Record updated successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'view_records.php'; // Redirect to the records page
-                });
-            };
-        </script>";
+        window.onload = function() {
+            Swal.fire({
+                title: 'Success!',
+                text: 'Record updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'view_records.php';
+            });
+        };
+    </script>";
         exit();
     } else {
         echo "<script>
-    Swal.fire({
-        title: 'Error!',
-        text: 'Error: " . addslashes($conn->error) . "',
-        icon: 'error',
-        confirmButtonText: 'OK'
-    });
-</script>";
+        Swal.fire({
+            title: 'Error!',
+            text: 'Error: " . addslashes($conn->error) . "',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>";
     }
 }
 ?>

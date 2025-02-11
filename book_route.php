@@ -40,8 +40,6 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         $email = $_POST['email'];
         $get_in_location = $_POST['get_in_location'];
 
-        echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
-
         $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -55,31 +53,37 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 $conn->query("UPDATE routes SET available_seats = $new_seats WHERE id = $route_id");
 
                 echo "<script>
+                window.onload = function(){
                 Swal.fire({
                     title: 'Booking Successful!',
                     text: 'Your Booking ID is: " . $booking_id . "',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
+                };
                 </script>";
             } else {
                 echo "<script>
+                window.onload = function(){
                 Swal.fire({
                     title: 'Error!',
                     text: 'Not enough seats available!',
                     icon: 'warning',
                     confirmButtonText: 'OK'
                 });
+                };
                 </script>";
             }
         } else {
             echo "<script>
+            window.onload = function(){
             Swal.fire({
                 title: 'Error!',
                 text: 'Invalid Route ID!',
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
+            };
             </script>";
         }
     }
@@ -143,7 +147,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>
-                        <td id='firstrow' data-title='Route ID'>{$row['id']}</td>
+                        <td id='firstrow'data-title='Route ID'>{$row['id']}</td>
                         <td data-title='Date'>{$row['date']}</td>
                         <td data-title='Time'>{$row['time']}</td>
                         <td data-title='Departure Place'>{$row['departure_place']}</td>

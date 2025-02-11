@@ -53,7 +53,7 @@
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='9'>No bookings found.</td></tr>";
+                echo "<tr><td colspan='11'>No bookings found.</td></tr>";
             }
             ?>
         </tbody>

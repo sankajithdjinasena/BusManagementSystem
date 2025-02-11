@@ -40,8 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
     <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/view_record.css">
-
-
 </head>
 
 <body>
