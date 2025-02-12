@@ -6,7 +6,7 @@ nav {
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: wrap; 
 }
 
 nav .logo {
@@ -15,7 +15,7 @@ nav .logo {
     font-weight: bold;
     word-spacing: 10px;
     text-align: center;
-    flex: 1 1 100%; /* Full width on small screens */
+    flex: 1 1 100%; 
 }
 
 
@@ -24,8 +24,8 @@ nav .pages {
     justify-content: space-between;
     align-items: center;
     width: auto;
-    flex: 1 1 100%; /* Full width on small screens */
-    flex-wrap: wrap; /* Allow wrapping for links */
+    flex: 1 1 100%; 
+    flex-wrap: wrap; 
     gap: 10px;
     margin-top: 10px;
 }
@@ -40,7 +40,7 @@ nav .pages a {
     border-radius: 5px;
     background-color: rgba(53, 52, 52, 0.5);
     transition: 0.5s ease;
-    flex: 1 1 auto; /* Responsive sizing for links */
+    flex: 1 1 auto; 
 }
 
 nav .pages a:hover {
@@ -73,10 +73,10 @@ marquee {
     color: aqua;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Stack logo and links vertically */
+        flex-direction: column; 
         align-items: center;
     }
 
@@ -86,22 +86,22 @@ marquee {
     }
 
     nav .pages a {
-        flex: 1 1 45%; /* Two links per row on small screens */
+        flex: 1 1 45%; 
     }
 
     #adminbtn {
-        width: 100%; /* Full width for admin button */
+        width: 100%; 
         margin-top: 0;
     }
 }
 
 @media (max-width: 480px) {
     nav .pages a {
-        flex: 1 1 100%; /* Full width for each link */
+        flex: 1 1 100%; 
     }
 
     #adminbtn {
-        width: 100%; /* Full width for admin button */
+        width: 100%; 
         margin-top: 0;
     }
 }

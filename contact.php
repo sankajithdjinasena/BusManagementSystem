@@ -21,6 +21,7 @@
             <a href="booking.php">Booking</a>
             <a href="about.php">About</a>
             <a href="contact.php" id="active">Contact</a>
+            <a href="signin.php" id="adminbtn">User Login</a>
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>

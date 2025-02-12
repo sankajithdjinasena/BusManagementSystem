@@ -7,7 +7,7 @@ h2{
     text-align: center;
 }
 
-/* General form styling */
+
 form {
     width: 300px;
     margin: 0 auto;
@@ -23,7 +23,6 @@ form {
     text-align: center;
 }
 
-/* Label styling */
 label {
     text-align: left;
     display: block;
@@ -31,7 +30,6 @@ label {
     font-weight: bold;
 }
 
-/* Input field styling */
 input[type="email"],input[type="text"],input[type="number"],
 input[type="time"],input[type="date"],input[type="password"] {
     width: 100%;
@@ -41,7 +39,6 @@ input[type="time"],input[type="date"],input[type="password"] {
     border-radius: 4px;
 }
 
-/* Submit button styling */
 input[type="submit"] {
     width: 70%;
     padding: 10px;
@@ -60,7 +57,6 @@ input[type="submit"]:hover {
     transform: scale(1.05);
 }
 
-/* Paragraph and link styling */
 p {
     text-align: center;
     margin-top: 20px;

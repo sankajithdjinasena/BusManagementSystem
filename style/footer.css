@@ -2,7 +2,6 @@ body{
     font-family: Arial;
 
 }
-/*Footer*/
 footer{
     border-radius: 5px;
     margin: 20px;
@@ -62,6 +61,7 @@ footer{
 .social i:hover{
     color: aqua;
 }
+
 
 
 

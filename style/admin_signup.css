@@ -7,7 +7,6 @@ h2{
     text-align: center;
 }
 
-/* General form styling */
 form {
     width: 300px;
     margin: 0 auto;
@@ -17,25 +16,22 @@ form {
     background-color: #f9f9f9;
 }
 
-/* Label styling */
 label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-/* Input field styling */
-input[type="email"],
+input[type="email"],input[type="text"],
 input[type="password"] {
     font-size: 16px;
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-/* Submit button styling */
 input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -52,7 +48,6 @@ input[type="submit"]:hover {
     font-weight: bold;
 }
 
-/* Paragraph and link styling */
 p {
     text-align: center;
     margin-top: 20px;
@@ -67,4 +62,24 @@ a:hover {
     text-decoration: underline;
 }
 
+.btn-home {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+}
+
+.btn-home:hover {
+    background-color: #218838;
+    color: #000;
+    text-decoration: none;
+}
 

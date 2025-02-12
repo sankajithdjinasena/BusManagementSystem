@@ -17,6 +17,7 @@ if (isset($_POST['signin'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             echo "<script>
+            window.onload = function(){
                 Swal.fire({
                     title: 'Success!',
                     text: 'Login successful!',
@@ -25,8 +26,11 @@ if (isset($_POST['signin'])) {
                 }).then(() => {
                     window.location.href = 'dashboard.php'; 
                 });
-            </script>";        } else {
+            };
+            </script>";        
+        } else {
                 echo "<script>
+                window.onload = function(){
                     Swal.fire({
                         title: 'Error!',
                         text: 'Incorrect password!',
@@ -35,9 +39,11 @@ if (isset($_POST['signin'])) {
                     }).then(() => {
                         window.location.href = 'signin.php'; 
                     });
+                };
                 </script>";        }
     } else {
         echo "<script>
+        window.onload = function(){
         Swal.fire({
             title: 'Error!',
             text: 'No user found with this email!',
@@ -46,6 +52,7 @@ if (isset($_POST['signin'])) {
         }).then(() => {
             window.location.href = 'signin.php'; 
         });
+        };
     </script>";    }
 }
 ?>
@@ -55,12 +62,11 @@ if (isset($_POST['signin'])) {
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
-    <link rel="stylesheet" href="style/signins.css">
+    <link rel="stylesheet" href="style/signin.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-
 
 </head>
 <body>
@@ -69,9 +75,10 @@ if (isset($_POST['signin'])) {
         <div class="pages">
             <a href="home.php">Home</a>
             <a href="schedules.php">Schedules</a>
-            <a href="booking.php" id="active">Booking</a>
+            <a href="booking.php" >Booking</a>
             <a href="about.php" >About</a>
             <a href="contact.php">Contact</a>
+            <a href="signin.php" id="adminbtn" style="color:red">User Login</a>
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>

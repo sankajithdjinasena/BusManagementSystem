@@ -60,7 +60,7 @@ if (isset($_POST['signin'])) {
 <head>
     <meta charset="UTF-8">
     <title>RIDESYNC - Admin Sign In</title>
-    <link rel="stylesheet" href="style/admin_signins.css">
+    <link rel="stylesheet" href="style/admin_signin.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -77,8 +77,8 @@ if (isset($_POST['signin'])) {
             <a href="booking.php">Booking</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
+            <a href="signin.php" id="adminbtn">User Login</a>
             <a href="admin_signin.php" id="adminbtn" style="color:red">Admin Login</a>
-            <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
         </div>
     </nav>
 

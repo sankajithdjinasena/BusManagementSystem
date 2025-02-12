@@ -56,7 +56,7 @@
                         icon: 'success',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        window.location.href = 'your_next_page.php';
+                        window.location.href = 'view_route_admin.php';
                     });
                 };
             </script>";
@@ -81,15 +81,15 @@
                     icon: 'error',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    window.location.href = 'your_redirect_page.php';
+                    window.location.href = 'view_route_admin.php';
                 });
             };
         </script>";
         }
     }
     ?>
-    <br>
-    <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+        <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+
     <div>
         <h2>Available Routes</h2>
 

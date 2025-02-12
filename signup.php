@@ -45,7 +45,7 @@ if (isset($_POST['signup'])) {
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
-    <link rel="stylesheet" href="style/signup.css">
+    <link rel="stylesheet" href="style/signups.css">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -63,6 +63,7 @@ if (isset($_POST['signup'])) {
             <a href="booking.php" id="active">Booking</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
+            <a href="signin.php" id="adminbtn">User Login</a>
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>

@@ -84,7 +84,7 @@ body {
     transform: scale(1.05);
 }
 
-/*ClassB - Welcoming*/
+
 .classB {
     height: auto;
     margin-top: 50px;
@@ -119,24 +119,6 @@ body {
     font-weight: bold;
 }
 
-/**/
-.map {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-iframe {
-    width: 80%;
-    height: 500px;
-    width: 500px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgb(241, 2, 2);
-
-}
-
 #book {
     color: red;
     transition: 0.5s ease;
@@ -146,8 +128,6 @@ iframe {
     text-shadow: 0 0 5px rgb(241, 2, 2);
 
 }
-
-/* Announcment */
 
 .messsage-container {
     width: 80%;

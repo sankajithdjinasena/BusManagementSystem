@@ -51,6 +51,34 @@ if (!isset($_SESSION['admin_id'])) {
         transform: scale(1.002);
     }
 
+    .total_board {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .total_card {
+        cursor: pointer;
+        background: #fff;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    .total_card:hover {
+        transform: scale(1.02);
+    }
+    .total_card h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .total_card h1 {
+        font-size: 24px;
+        color:rgb(0, 0, 0);
+    }
     
 </style>
 
@@ -63,6 +91,64 @@ if (!isset($_SESSION['admin_id'])) {
         </div>
     </nav>
     <h2>Welcome, Admin <?php echo $_SESSION['admin_username']; ?>!</h2>
+
+
+    <div class="total_board">
+        <div class="total_card">
+            <h3>Total Bus Owners</h3>
+            <?php
+            $sql = "SELECT * FROM bus_owners";
+            $result = $conn->query($sql);
+            $total_bus_owners = $result->num_rows;
+            ?>
+            <h1><?php echo $total_bus_owners; ?></h1>
+        </div>
+        <div class="total_card">
+            <h3>Total Drivers</h3>
+            <?php
+            $sql = "SELECT * FROM drivers";
+            $result = $conn->query($sql);
+            $total_drivers = $result->num_rows;
+            ?>
+            <h1><?php echo $total_drivers; ?></h1>
+        </div>
+        <div class="total_card">
+            <h3>Total Buses</h3>
+            <?php
+            $sql = "SELECT * FROM buses";
+            $result = $conn->query($sql);
+            $total_buses = $result->num_rows;
+            ?>
+            <h1><?php echo $total_buses; ?></h1>
+        </div>
+        <div class="total_card">
+            <h3>Total Routes</h3>
+            <?php
+            $sql = "SELECT * FROM routes";
+            $result = $conn->query($sql);
+            $total_routes = $result->num_rows;
+            ?>
+            <h1><?php echo $total_routes; ?></h1>
+        </div>
+        <div class="total_card">
+            <h3>Total Users</h3>
+            <?php
+            $sql = "SELECT * FROM users";
+            $result = $conn->query($sql);
+            $total_users = $result->num_rows;
+            ?>
+            <h1><?php echo $total_users; ?></h1>
+        </div>
+        <div class="total_card">
+            <h3>Total Bookings</h3>
+            <?php
+            $sql = "SELECT * FROM bookings";
+            $result = $conn->query($sql);
+            $total_bookings = $result->num_rows;
+            ?>
+            <h1><?php echo $total_bookings; ?></h1>
+        </div>
+    </div>
 
     <div id="board">
         <h1>Admin Dashboard</h1>
@@ -130,7 +216,7 @@ if (!isset($_SESSION['admin_id'])) {
         <?php $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC");
         ?>
         <div class="messsage-container" style="text-align: left;">
-            <ul>
+            <ul style="list-style-type: none;">
                 <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
                         <li class="message-item" style=" padding: 10px; margin-bottom: 15px;border-left: 5px solid #4CAF50;background-color: #f9f9f9; transition: background-color 0.3s ease"><?php echo $row['message']; ?>
@@ -145,20 +231,43 @@ if (!isset($_SESSION['admin_id'])) {
     </div>
     <div>
         <h3 style="color: #000000;">Contact Messages</h3>
-        <?php $messages = $conn->query("SELECT * FROM contacts ORDER BY created_at DESC LIMIT 5");
+        <div class="total_board">
+            <div class="total_card">
+                <h3>Total Pendings</h3>
+                <?php
+                $sql = "SELECT * FROM contacts WHERE replied = 'Pending'";
+                $result = $conn->query($sql);
+                $total_msg = $result->num_rows;
+                ?>
+                <h1><?php echo $total_msg; ?></h1>
+            </div>
+            <div class="total_card">
+                <h3>Total Replied</h3>
+                <?php
+                $sql = "SELECT * FROM contacts WHERE replied = 'Replied'";
+                $result = $conn->query($sql);
+                $total_msg = $result->num_rows;
+                ?>
+                <h1><?php echo $total_msg; ?></h1>
+            </div>
+        </div>
+        <?php $messages = $conn->query("SELECT * FROM contacts WHERE replied = 'Pending' ORDER BY created_at  DESC LIMIT 5 ");
         ?>
         <div class="messsage-container" style="text-align: left;">
-            <ul>
+            sort by: latest message
+            <ol>
                 <?php while ($row = $messages->fetch_assoc()) { ?>
                     <li class="messsage-item"><?php echo $row['message']; ?><br>
                         <small>Name : <?php echo $row['name']; ?></small><br>
                         <small>Email : <?php echo $row['email']; ?></small><br>
                         <small>Phone : <?php echo $row['phone']; ?></small><br>
-                        <small>Posted on: <?php echo $row['created_at']; ?></small>
+                        <small>Posted on: <?php echo $row['created_at']; ?></small><br>
+                        <small>Replied : <b style="color: <?php echo ($row['replied'] == 'Replied') ? 'green' : 'red'; ?>;">
+                                <?php echo $row['replied']; ?></b></small>
                     </li>
                     <br>
                 <?php } ?>
-            </ul>
+            </ol>
         </div>
     </div>
 
