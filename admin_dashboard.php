@@ -122,9 +122,9 @@ if (!isset($_SESSION['admin_id'])) {
             <h1><?php echo $total_buses; ?></h1>
         </div>
         <div class="total_card">
-            <h3>Total Routes</h3>
+            <h3>Total Routes(Incoming)</h3>
             <?php
-            $sql = "SELECT * FROM routes";
+            $sql = "SELECT * FROM routes WHERE date >= CURDATE()";
             $result = $conn->query($sql);
             $total_routes = $result->num_rows;
             ?>

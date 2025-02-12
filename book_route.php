@@ -12,7 +12,6 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 <link rel="stylesheet" href="style/book_route.css">
 <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
-
 <body>
     <h2>Book a Route</h2>
     <form class="form1" action="book_route.php" method="POST">
@@ -40,7 +39,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         $email = $_POST['email'];
         $get_in_location = $_POST['get_in_location'];
 
-        $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id");
+        $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id AND date >= CURDATE()");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if ($row['available_seats'] >= $seats) {
@@ -125,7 +124,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 $filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
 
                 $sql = "SELECT routes.id, date, time, departure_place, arrival_place, bus_id, total_seats, duration, available_seats, buses.bus_number 
-                FROM routes 
+                FROM routes
                 JOIN buses ON routes.bus_id = buses.id";
 
                 $conditions = [];
@@ -141,7 +140,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 if (count($conditions) > 0) {
                     $sql .= " WHERE " . implode(' AND ', $conditions);
                 }
-
+                $sql .= " WHERE date >= CURDATE()";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -165,5 +164,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         </table>
     </div>
 </body>
-
+<script>
+  document.getElementById("filter_date").min = new Date().toISOString().split("T")[0];
+</script>
 </html>

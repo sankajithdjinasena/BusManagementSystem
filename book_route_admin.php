@@ -38,7 +38,7 @@
         $email = $_POST['email'];
         $get_in_location = $_POST['get_in_location'];
 
-        $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id");
+        $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id AND date >= CURDATE()");
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if ($row['available_seats'] >= $seats) {
@@ -139,7 +139,7 @@
                 if (count($conditions) > 0) {
                     $sql .= " WHERE " . implode(' AND ', $conditions);
                 }
-
+                $sql .= " WHERE date >= CURDATE()";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -163,5 +163,7 @@
         </table>
     </div>
 </body>
-
+<script>
+  document.getElementById("filter_date").min = new Date().toISOString().split("T")[0];
+</script>
 </html>

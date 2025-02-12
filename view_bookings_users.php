@@ -45,7 +45,7 @@
                 $sql = "SELECT bookings.id, customer_name, customer_phone, seats_booked, date, time, departure_place, arrival_place, email,get_in_location 
                         FROM bookings 
                         JOIN routes ON bookings.route_id = routes.id
-                        WHERE customer_phone = '$filter_phone' AND email = '$filter_email'";
+                        WHERE customer_phone = '$filter_phone' AND email = '$filter_email' AND date >= CURDATE()";
 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {

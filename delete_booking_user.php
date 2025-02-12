@@ -6,7 +6,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $booking_id = $_POST['booking_id'];
 
-    $sql = "SELECT route_id, seats_booked FROM bookings WHERE id = $booking_id";
+    $sql = "SELECT route_id, seats_booked,date FROM bookings WHERE id = $booking_id";
     $result = $conn->query($sql);
 
 
@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $seats_booked = $row['seats_booked'];
 
         $update_sql = "UPDATE routes SET available_seats = available_seats + $seats_booked WHERE id = $id";
+        $update_sql .= " AND date >= CURDATE()";
 
         if ($conn->query($update_sql) === TRUE) {
             $delete_sql = "DELETE FROM bookings WHERE id = $booking_id";

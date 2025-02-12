@@ -65,7 +65,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             $filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
 
             $sql = "SELECT routes.id, date, time, departure_place, arrival_place, bus_id, total_seats, duration, available_seats, buses.bus_number 
-                    FROM routes 
+                    FROM routes
                     JOIN buses ON routes.bus_id = buses.id";
 
             $conditions = [];
@@ -85,6 +85,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             if (count($conditions) > 0) {
                 $sql .= " WHERE " . implode(' AND ', $conditions);
             }
+            $sql .= " WHERE date >= CURDATE()";
 
             $result = $conn->query($sql);
 
@@ -102,7 +103,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                           </tr>";
                 }
             } else {
-                echo "<tr><td colspan='8'>No Schedules available.</td></tr>";
+                echo "<tr><td colspan='8'><center>No Schedules available</center></td></tr>";
             }
             ?>
         </tbody>
@@ -152,4 +153,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         </div>
     </footer>
 </body>
+    <script>
+    document.getElementById("filter_date").min = new Date().toISOString().split("T")[0];
+    </script>
 </html>
