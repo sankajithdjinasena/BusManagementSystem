@@ -44,12 +44,14 @@ if (isset($_POST['signin'])) {
         }
     } else {
         echo "<script>
+        window.onload = function() {
             Swal.fire({
                 title: 'Error!',
                 text: 'No admin found with this email!',
                 icon: 'error',
                 confirmButtonText: 'Try Again'
             });
+    };
         </script>";
     }
 }

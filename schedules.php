@@ -45,16 +45,16 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     <table>
         <link rel="stylesheet" href="style/schedule_table_responsive.css">
-        <thead>
+        <thead >
             <tr>
-                <th id="firsthead">Route ID</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Departure Place</th>
-                <th>Arrival Place</th>
-                <th>Duration(hours)</th>
-                <th>Bus Number</th>
-                <th>Available Seats</th>
+                <th id="firsthead"><center>Route ID</center></th>
+                <th><center>Date</center></th>
+                <th><center>Time</center></th>
+                <th><center>Departure Place</center></th>
+                <th><center>Arrival Place</center></th>
+                <th><center>Duration(hours)</center></th>
+                <th><center>Bus Number</center></th>
+                <th><center>Available Seats</center></th>
             </tr>
         </thead>
         <tbody>
@@ -92,14 +92,14 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td id='firstrow' data-title='Route ID'><b>{$row['id']}</b></td>
-                            <td data-title='Date'>{$row['date']}</td>
-                            <td data-title='Time'>{$row['time']}</td>
-                            <td data-title='Departure Place'>{$row['departure_place']}</td>
-                            <td data-title='Arrival Place'>{$row['arrival_place']}</td>
-                            <td data-title='Duration(hours)'>{$row['duration']}</td>
-                            <td data-title='Bus Number'>{$row['bus_number']}</td>
-                            <td data-title='Available Seats'>{$row['available_seats']}</td>
+                            <td id='firstrow' data-title='Route ID'><b><center>{$row['id']}</center></b></td>
+                            <td data-title='Date'><center>{$row['date']}</center></td>
+                            <td data-title='Time'><center>{$row['time']}</center></td>
+                            <td data-title='Departure Place'><center>{$row['departure_place']}</center></td>
+                            <td data-title='Arrival Place'><center>{$row['arrival_place']}</center></td>
+                            <td data-title='Duration(hours)'><center>{$row['duration']}</center></td>
+                            <td data-title='Bus Number'><center>{$row['bus_number']}</center></td>
+                            <td data-title='Available Seats'><center>{$row['available_seats']}</center></td>
                           </tr>";
                 }
             } else {

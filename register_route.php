@@ -16,7 +16,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <h2>Route Registration</h2>
     <form action="register_route.php" method="POST">
         <label>Date:</label>
-        <input type="date" name="date" required>
+        <input id="date" type="date" name="date" required>
         
         <label>Time:</label>
         <input type="time" name="time" required>
@@ -95,6 +95,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         if ($conn->query($sql) === TRUE) {
             $route_id = $conn->insert_id; 
             echo "<script>
+            window.onload = function() {
             Swal.fire({
                 title: 'Success!',
                 text: 'Route registered successfully! Route ID: " . $route_id . "',
@@ -103,9 +104,12 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             }).then(() => {
                 window.location.href = 'view_routes.php';
             });
+        };
+
         </script>";
         } else {
             echo "<script>
+            window.onload = function() {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error: " . addslashes($conn->error) . "',
@@ -114,9 +118,14 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             }).then(() => {
                 window.location.href = 'register_route.php';
             });
+        };
         </script>";
         }
     }
     ?>
 </body>
+
+<script>
+    document.getElementById("date").min = new Date().toISOString().split("T")[0];
+    </script>
 </html>

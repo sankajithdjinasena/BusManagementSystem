@@ -95,7 +95,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         </div>
     </div>
     <div class="classB">
-        <h1>HOW TO BOOK BUS</h1>
+        <h1><a href="booking.php" style="text-decoration: none; color:#000000">HOW TO BOOK BUS</a></h1>
         <div class="classB-grid">
             <div class="box">
                 <div class="box-number">1</div>

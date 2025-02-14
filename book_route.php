@@ -31,6 +31,15 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     </form>
 
     <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/SMTP.php';
+    
+    $mail = new PHPMailer(true);
+    
     if (isset($_POST['submit'])) {
         $route_id = $_POST['route_id'];
         $customer_name = $_POST['customer_name'];
@@ -38,36 +47,85 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         $seats = $_POST['seats'];
         $email = $_POST['email'];
         $get_in_location = $_POST['get_in_location'];
-
+    
         $result = $conn->query("SELECT available_seats FROM routes WHERE id = $route_id AND date >= CURDATE()");
+        
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if ($row['available_seats'] >= $seats) {
                 $new_seats = $row['available_seats'] - $seats;
-                $conn->query("INSERT INTO bookings (route_id, customer_name, customer_phone,email, seats_booked,get_in_location) 
-                              VALUES ($route_id, '$customer_name', '$customer_phone','$email', $seats,'$get_in_location')");
-
+                $conn->query("INSERT INTO bookings (route_id, customer_name, customer_phone, email, seats_booked, get_in_location) 
+                              VALUES ($route_id, '$customer_name', '$customer_phone', '$email', $seats, '$get_in_location')");
+    
                 $booking_id = $conn->insert_id;
-
                 $conn->query("UPDATE routes SET available_seats = $new_seats WHERE id = $route_id");
-
-                echo "<script>
-                window.onload = function(){
-                Swal.fire({
-                    title: 'Booking Successful!',
-                    text: 'Your Booking ID is: " . $booking_id . "',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                });
-                };
-                </script>";
+    
+                try {
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com'; 
+                    $mail->SMTPAuth = true;
+                    $mail->Username   = 'jobsanke26198@gmail.com'; 
+                    $mail->Password = 'iscwzyvhbbanhoov'; 
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port = 587;
+    
+                    $mail->setFrom('ridesync@outlook.com', 'RIDESYNC');
+                    $mail->addAddress($email, $customer_name);
+                    $mail->isHTML(true);
+                    $mail->Subject = "Booking Confirmation - ID: $booking_id";
+                    $mail->Body = "
+                        <html>
+                        <head><title>Booking Confirmation</title></head>
+                        <body>
+                            <h2>Booking Confirmation</h2>
+                            <p>Dear $customer_name,</p>
+                            <p>Thank you for booking with us. Here are your details:</p>
+                            <table border='1' cellpadding='5' cellspacing='0'>
+                                <tr><td><strong>Booking ID</strong></td><td>$booking_id</td></tr>
+                                <tr><td><strong>Route ID</strong></td><td>$route_id</td></tr>
+                                <tr><td><strong>Seats Booked</strong></td><td>$seats</td></tr>
+                                <tr><td><strong>Get-in Location</strong></td><td>$get_in_location</td></tr>
+                                <tr><td><strong>Customer Phone</strong></td><td>$customer_phone</td></tr>
+                                <tr><td><strong>Email</strong></td><td>$email</td></tr>
+                            </table>
+                            <p>We look forward to serving you!</p>
+                            <p>Best regards,<br>RIDESYNC</p>
+                        </body>
+                        </html>";
+    
+                    $mail->send();
+                    
+                    echo "<script>
+                    window.onload = function(){
+                    Swal.fire({
+                        title: 'Booking Successful!',
+                        text: 'Your Booking ID is: " . $booking_id . ". Check your email for confirmation.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                    };
+                    </script>";
+    
+                } catch (Exception $e) {
+                    echo "<script>
+                    window.onload = function(){
+                    Swal.fire({
+                        title: 'Booking Confirmed!',
+                        text: 'Email could not be sent. Error: " . addslashes($mail->ErrorInfo) . "',
+                        icon: 'warning',
+                        confirmButtonText: 'OK'
+                    });
+                    };
+                    </script>";
+                }
+                
             } else {
                 echo "<script>
                 window.onload = function(){
                 Swal.fire({
                     title: 'Error!',
                     text: 'Not enough seats available!',
-                    icon: 'warning',
+                    icon: 'error',
                     confirmButtonText: 'OK'
                 });
                 };
