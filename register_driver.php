@@ -7,6 +7,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 <head>
     <title>Driver Registration</title>
     <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
     
@@ -41,33 +42,76 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         $phone = $_POST['phone'];
         $nic = $_POST['nic'];
 
-        $sql = "INSERT INTO drivers (name, license_number, phone,nic) VALUES ('$name', '$license_number', '$phone','$nic')";
+        try {
+            $sql = "INSERT INTO drivers (name, email, phone, license_number) VALUES ('$name', '$email', '$phone', '$license_number')";
+            
+            if ($conn->query($sql) === TRUE) {
+                $driver_id = $conn->insert_id;
+                
+                echo "<script>
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Driver registered successfully!\\nDriver ID: $driver_id',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'view_records.php';
+                    });
+                </script>";
+            }
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1062) {
+                $errorMessage = "Email, Phone, or License Number already exists!";
+            } else {
+                $errorMessage = "Error: " . addslashes($e->getMessage());
+            }
         
-        if ($conn->query($sql) === TRUE) {
-            $driver_id = $conn->insert_id;  
             echo "<script>
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'Driver registered successfully! Driver ID: " . $driver_id . "',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
+                    title: 'Error!',
+                    text: '$errorMessage',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
                 }).then(() => {
-                    window.location.href = 'view_records.php'; 
+                    window.location.href = 'register_driver.php';
                 });
             </script>";
-        } else {
-            echo "<script>
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error: " . addslashes($conn->error) . "',
-                icon: 'error',
-                confirmButtonText: 'Try Again'
-            }).then(() => {
-                window.location.href = 'register_driver.php'; 
-            });
-        </script>";
         }
-    }
+    }        
     ?>
+    <h2>Drivers</h2>
+    <form method="GET" action="">
+        <label for="filter_driver">Filter by License:</label>
+        <input type="text" name="filter_license" id="filter_driver" placeholder="Enter License No:">
+        <button type="submit">Filter</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>NIC</th>
+                <th>License</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $filter = isset($_GET['filter_license']) ? $_GET['filter_license'] : '';
+            $sql = "SELECT * FROM drivers";
+            if (!empty($filter)) {
+                $sql .= " WHERE license_number LIKE '%$filter%'";
+            }
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td id='firstrow'  data-title='ID'>{$row['id']}</td>
+                        <td data-title='Name'>{$row['name']}</td>
+                        <td data-title='NIC'>{$row['nic']}</td>
+                        <td data-title='License'>{$row['license_number']}</td>
+                      </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>

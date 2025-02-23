@@ -21,7 +21,7 @@ label {
     font-weight: bold;
     color: #555;
 }
-input[type="text"], input[type="number"], input[type="submit"], input[type="date"],
+input[type="text"], input[type="number"], input[type="submit"], input[type="date"],select,
 button {
     width: 100%;
     padding: 10px;
@@ -29,7 +29,6 @@ button {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
-
 }
 
 input[type="submit"] {
@@ -154,7 +153,6 @@ a:hover {
     #firsthead{
         text-align: center;
     }
-
 
     td {
         border: none;

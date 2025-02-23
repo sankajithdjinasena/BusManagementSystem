@@ -76,7 +76,9 @@ if (isset($_POST['submit'])) {
     $phone = $_POST['phone'];
     $nic = $_POST['nic'];
 
-    $sql = "INSERT INTO bus_owners (name, email, phone,nic) VALUES ('$name', '$email', '$phone','$nic')";
+    $sql = "INSERT INTO bus_owners (name, email, phone, nic) VALUES ('$name', '$email', '$phone', '$nic')";
+
+try {
     if ($conn->query($sql) === TRUE) {
         $owner_id = $conn->insert_id;
 
@@ -90,18 +92,26 @@ if (isset($_POST['submit'])) {
                 window.location.href = 'register_owner.php';
             });
         </script>";
+    }
+} catch (mysqli_sql_exception $e) {
+    if ($e->getCode() == 1062) {
+        $errorMessage = "Email, Phone, or NIC already exists!";
     } else {
-        echo "<script>
+        $errorMessage = "Error: " . addslashes($e->getMessage());
+    }
+
+    echo "<script>
         Swal.fire({
             title: 'Error!',
-            text: 'Error: " . addslashes($conn->error) . "',
+            text: '$errorMessage',
             icon: 'error',
             confirmButtonText: 'Try Again'
         }).then(() => {
             window.location.href = 'register_owner.php'; 
         });
     </script>";
-        }
+}
+
 }
 ?>
 

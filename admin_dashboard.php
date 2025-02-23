@@ -46,7 +46,7 @@ if (!isset($_SESSION['admin_id'])) {
         display: grid;
         grid-template-columns: auto;
     }
-
+    
     #adminbtn:hover {
         transform: scale(1.002);
     }
@@ -79,13 +79,15 @@ if (!isset($_SESSION['admin_id'])) {
         font-size: 24px;
         color:rgb(0, 0, 0);
     }
+    #adminbtn{
+        width: 400px;
+    }
     
 </style>
 
 <body>
     <nav>
         <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
-
         <div class="pages">
             <a href="admin_logout.php" id="adminbtn">Logout</a>
         </div>

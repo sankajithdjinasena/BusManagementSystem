@@ -6,12 +6,12 @@ if (isset($_POST['signup'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
-
-    if ($conn->query($sql) === TRUE) {
+    try {
+        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
+        $conn->query($sql);
+    
         echo "<script>
         window.onload = function() {
             Swal.fire({
@@ -24,18 +24,26 @@ if (isset($_POST['signup'])) {
             });
         };
         </script>";
-    } else {
+    
+    } catch (mysqli_sql_exception $e) {
+        if ($e->getCode() == 1062) {  
+            $errorMessage = "Username or Email already exists!";
+        } else {
+            $errorMessage = "Database Error: " . addslashes($e->getMessage());
+        }
+    
         echo "<script>
             window.onload = function(){
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error: " . addslashes($conn->error) . "',
-                icon: 'error',
-                confirmButtonText: 'Try Again'
-            });
-        };
+                Swal.fire({
+                    title: 'Error!',
+                    text: '$errorMessage',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+            };
         </script>";
     }
+    
 }
 ?>
 

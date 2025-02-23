@@ -9,14 +9,24 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <title>Book a Route</title>
 </head>
 
-<link rel="stylesheet" href="style/book_route.css">
+<link rel="stylesheet" href="style/book_routes.css">
 <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
 <body>
     <h2>Book a Route</h2>
     <form class="form1" action="book_route.php" method="POST">
-        <label>Route ID:</label>
-        <input type="number" name="route_id" required autocomplete="off">
+    <label>Route ID:</label>
+    <select name="route_id" required>
+        <option value="">-- Select Route --</option>
+        <?php
+        $query = "SELECT id, route_name FROM routes"; 
+        $result = $conn->query($query);
+        
+        while ($row = $result->fetch_assoc()) {
+            echo "<option value='{$row['id']}'>{$row['id']}";
+        }
+        ?>
+</select>
         <label>Your Name:</label>
         <input type="text" name="customer_name" required autocomplete="off">
         <label>Your Phone:</label>

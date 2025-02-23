@@ -111,6 +111,7 @@
             <tr>
                 <th>ID</th>
                 <th>Bus Number</th>
+                <th>Engine Number</th>
                 <th>Route</th>
                 <th>Actions</th>
             </tr>
@@ -127,6 +128,7 @@
                 echo "<tr>
                         <td id='firstrow' data-title='ID'>{$row['id']}</td>
                         <td data-title='Bus Number'>{$row['bus_number']}</td>
+                        <td data-title='Bus Number'>{$row['engine_number']}</td>
                         <td data-title='Route'>{$row['route']}</td>
                         <td data-title='Actions'>
                             <button><a href='edit_bus.php?table=buses&id={$row['id']}'>Edit</a></button>

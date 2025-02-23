@@ -93,6 +93,10 @@ marquee {
         width: 100%; 
         margin-top: 0;
     }
+
+    #adminbth:hover{
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 480px) {
@@ -101,7 +105,7 @@ marquee {
     }
 
     #adminbtn {
-        width: 100%; 
+        width: 100%;
         margin-top: 0;
     }
 }

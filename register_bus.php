@@ -19,6 +19,9 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <label>Bus Number:</label>
             <input type="text" name="bus_number" required>
 
+            <label>Engine Number:</label>
+            <input type="text" name="engine_number" required>
+
             <label>Owner ID:</label>
             <input type="text" name="owner_id" required>
 
@@ -109,39 +112,49 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <?php
     if (isset($_POST['submit'])) {
         $bus_number = $_POST['bus_number'];
+        $engine_number = $_POST['engine_number'];
         $owner_id = $_POST['owner_id'];
         $driver_id = $_POST['driver_id'];
         $route = $_POST['route'];
         $capacity = $_POST['capacity'];
 
-        $sql = "INSERT INTO buses (bus_number, owner_id, driver_id, route, capacity) 
-                VALUES ('$bus_number', '$owner_id', '$driver_id', '$route', '$capacity')";
+        try {
+            $stmt = $conn->prepare("INSERT INTO buses (bus_number, engine_number, owner_id, driver_id, route, capacity) 
+                                    VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisi", $bus_number, $engine_number, $owner_id, $driver_id, $route, $capacity);
+            $stmt->execute();
 
-        if ($conn->query($sql) === TRUE) {
-            $bus_id = $conn->insert_id;
+            $bus_id = $stmt->insert_id;
             echo "<script>
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Bus registered successfully! Bus ID: " . $bus_id . "',
+                    text: 'Bus registered successfully!\\nBus ID: $bus_id',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
                     window.location.href = 'view_records.php'; 
                 });
             </script>";
-        } else {
+
+        } catch (mysqli_sql_exception $e) {
+            if ($e->getCode() == 1062) {
+                $errorMessage = "Bus Number or Engine Number already exists!";
+            } else {
+                $errorMessage = "Error: " . addslashes($e->getMessage());
+            }
+
             echo "<script>
-            Swal.fire({
-                title: 'Error!',
-                text: 'Error: " . addslashes($conn->error) . "',
-                icon: 'error',
-                confirmButtonText: 'Try Again'
-            }).then(() => {
-                window.location.href = 'register_bus.php'; 
-            });
-        </script>";
+                Swal.fire({
+                    title: 'Error!',
+                    text: '$errorMessage',
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                }).then(() => {
+                    window.location.href = 'register_bus.php'; 
+                });
+            </script>";
+        }
     }
-}
     ?>
 </body>
 
