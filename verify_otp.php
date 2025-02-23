@@ -1,59 +1,40 @@
 <?php
-include 'db_config.php'; 
+session_start();
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
-session_start(); 
+if (!isset($_SESSION['reset_email'])) {
+    header("Location: forgot_password.php");
+    exit();
+}
 
-if (isset($_POST['signin'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if (isset($_POST['verify_otp'])) {
+    $entered_otp = $_POST['otp'];
 
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            echo "<script>
-            window.onload = function(){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Login successful!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'dashboard.php'; 
-                });
-            };
-            </script>";        
-        } else {
-                echo "<script>
-                window.onload = function(){
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Incorrect password!',
-                        icon: 'error',
-                        confirmButtonText: 'Try Again'
-                    }).then(() => {
-                        window.location.href = 'signin.php'; 
-                    });
-                };
-                </script>";        }
-    } else {
+    if ($entered_otp == $_SESSION['reset_otp']) {
         echo "<script>
-        window.onload = function(){
+        window.onload = function() {
         Swal.fire({
-            title: 'Error!',
-            text: 'No user found with this email!',
-            icon: 'error',
-            confirmButtonText: 'Try Again'
+            title: 'OTP Verified!',
+            text: 'You can now reset your password.',
+            icon: 'success',
+            confirmButtonText: 'Proceed'
         }).then(() => {
-            window.location.href = 'signin.php'; 
+            window.location.href = 'reset_password.php';
         });
         };
-    </script>";    }
+        </script>";
+    } else {
+        echo "<script>
+        window.onload = function() {
+        Swal.fire({
+            title: 'Invalid OTP!',
+            text: 'The OTP you entered is incorrect.',
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+        });
+        };
+        </script>";
+    }
 }
 ?>
 
@@ -61,16 +42,27 @@ if (isset($_POST['signin'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="style/signin.css">
+    <title>Verify OTP</title>
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+    <link rel="stylesheet" href="style/signin.css">
+
+    <style>
+        input[type="text"] {
+            font-size: 16px;    
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
+<nav>
         <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
         <div class="pages">
             <a href="home.php">Home</a>
@@ -82,20 +74,12 @@ if (isset($_POST['signin'])) {
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>
-
-    <h2>Sign in</h2>
-    <form action="signin.php" method="post">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required >
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-
-        <a id="forgot_password" href="forgot_password.php" style="color: blue; text-decoration: none;">Forgot Password?</a><br>
-        <input type="submit" name="signin" value="Sign In">
+    <h2>Verify OTP</h2>
+    <form action="verify_otp.php" method="post">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" name="otp" id="otp" maxlength="6" required>
+        <input type="submit" name="verify_otp" value="Verify">
     </form>
-    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
-
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

@@ -1,46 +1,74 @@
 <?php
-include 'db_config.php'; 
+include 'db_config.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
+session_start();
 
-session_start(); 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['signin'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/SMTP.php';
+
+if (isset($_POST['send_otp'])) {
+    $email = $_POST['email'];    
 
     $sql = "SELECT * FROM users WHERE email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+        $otp = rand(100000, 999999);
+
+        $_SESSION['reset_email'] = $email;
+        $_SESSION['reset_otp'] = $otp;
+
+        $mail = new PHPMailer(true);
+
+        try{
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'jobsanke26198@gmail.com'; 
+            $mail->Password = 'iscwzyvhbbanhoov'; 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom('ridysync@outlook.com', 'RideSync');
+            $mail->addAddress($email); 
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Password Reset OTP';
+            $mail->Body = "Your OTP for password reset is: <b>$otp</b>";
+
+            $mail->send();
+
             echo "<script>
-            window.onload = function(){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Login successful!',
-                    icon: 'success',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href = 'dashboard.php'; 
-                });
+            window.onload = function() {
+            Swal.fire({
+                title: 'OTP Sent!',
+                text: 'An OTP has been sent to your email.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href = 'verify_otp.php';
+            });
             };
-            </script>";        
-        } else {
-                echo "<script>
-                window.onload = function(){
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Incorrect password!',
-                        icon: 'error',
-                        confirmButtonText: 'Try Again'
-                    }).then(() => {
-                        window.location.href = 'signin.php'; 
-                    });
-                };
-                </script>";        }
+
+            </script>";
+
+        } catch (Exception $e) {
+            echo "<script>
+            window.onload = function() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Failed to send OTP. Mailer Error: {$mail->ErrorInfo}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            };
+            </script>";
+        }
+
     } else {
         echo "<script>
         window.onload = function(){
@@ -53,7 +81,8 @@ if (isset($_POST['signin'])) {
             window.location.href = 'signin.php'; 
         });
         };
-    </script>";    }
+        </script>";
+    }
 }
 ?>
 
@@ -61,16 +90,16 @@ if (isset($_POST['signin'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="style/signin.css">
+    <title>Forgot Password - OTP</title>
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="style/signin.css">
+    
 </head>
 <body>
-    <nav>
+<nav>
         <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
         <div class="pages">
             <a href="home.php">Home</a>
@@ -82,20 +111,13 @@ if (isset($_POST['signin'])) {
             <a href="admin_signin.php" id="adminbtn">Admin Login</a>
         </div>
     </nav>
-
-    <h2>Sign in</h2>
-    <form action="signin.php" method="post">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required >
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-
-        <a id="forgot_password" href="forgot_password.php" style="color: blue; text-decoration: none;">Forgot Password?</a><br>
-        <input type="submit" name="signin" value="Sign In">
+    <h2>Forgot Password</h2>
+    <form action="forgot_password.php" method="post">
+        <p>Enter your registered Email to get your OTP code</p>
+        <label for="email">Enter your email:</label>
+        <input type="email" name="email" id="email" required>
+        <input type="submit" name="send_otp" value="Send OTP">
     </form>
-    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
-
     <footer>
         <div class="footer-grid">
             <div class="footer-box">
