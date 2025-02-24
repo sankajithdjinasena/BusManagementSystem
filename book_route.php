@@ -84,24 +84,49 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                     $mail->isHTML(true);
                     $mail->Subject = "Booking Confirmation - ID: $booking_id";
                     $mail->Body = "
-                        <html>
-                        <head><title>Booking Confirmation</title></head>
-                        <body>
-                            <h2>Booking Confirmation</h2>
-                            <p>Dear $customer_name,</p>
-                            <p>Thank you for booking with us. Here are your details:</p>
-                            <table border='1' cellpadding='5' cellspacing='0'>
-                                <tr><td><strong>Booking ID</strong></td><td>$booking_id</td></tr>
-                                <tr><td><strong>Route ID</strong></td><td>$route_id</td></tr>
-                                <tr><td><strong>Seats Booked</strong></td><td>$seats</td></tr>
-                                <tr><td><strong>Get-in Location</strong></td><td>$get_in_location</td></tr>
-                                <tr><td><strong>Customer Phone</strong></td><td>$customer_phone</td></tr>
-                                <tr><td><strong>Email</strong></td><td>$email</td></tr>
-                            </table>
-                            <p>We look forward to serving you!</p>
-                            <p>Best regards,<br>RIDESYNC</p>
-                        </body>
-                        </html>";
+                            <html>
+                            <head>
+                                <title>Booking Confirmation</title>
+                            </head>
+                            <body style='font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; padding: 20px;'>
+                                <div style='max-width: 600px; margin: auto; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 20px;'>
+                                    <h2 style='color: #4CAF50; text-align: center;'>✅ Booking Confirmation</h2>
+                                    <p>Dear <strong>$customer_name</strong>,</p>
+                                    <p>Thank you for booking with us! Here are your booking details:</p>
+                                    
+                                    <table style='width: 100%; border-collapse: collapse;'>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Booking ID</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$booking_id</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Route ID</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$route_id</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Seats Booked</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$seats</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Get-in Location</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$get_in_location</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Customer Phone</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$customer_phone</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Email</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$email</td>
+                                        </tr>
+                                    </table>
+
+                                    <p style='margin-top: 20px;'>We look forward to serving you! 🚗</p>
+                                    <p>Best regards,<br><strong>RIDESYNC</strong></p>
+                                </div>
+                            </body>
+                            </html>";
+
     
                     $mail->send();
                     

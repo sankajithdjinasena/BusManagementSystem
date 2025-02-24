@@ -38,8 +38,17 @@ if (isset($_POST['send_otp'])) {
 
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset OTP';
-            $mail->Body = "Your OTP for password reset is: <b>$otp</b>";
-
+            $mail->Body = "
+            <div style='font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;'>
+                <h2 style='color: #4CAF50;'>🔐 Password Reset Request</h2>
+                <p>You requested to reset your password. Use the OTP below to proceed:</p>
+                <div style='padding: 15px; background-color: #fff; border: 1px dashed #4CAF50; border-radius: 5px; text-align: center;'>
+                    <p style='font-size: 24px; font-weight: bold; color: #4CAF50;'>$otp</p>
+                </div>
+                <p style='margin-top: 20px;'>If you didn't request this, please ignore this email.</p>
+                <p>Thank you,<br>RIDESYNC</p>
+            </div>
+            ";
             $mail->send();
 
             echo "<script>

@@ -26,19 +26,45 @@
         </div>
     </nav>
 
+    <h1><center>About us</center></h1>
+
+    <div style="padding: 10px; margin:0 100px; font-size:1.5em;"><center>Welcome to <b>Ridesync</b>, an innovative <b>Bus Management System</b> designed to revolutionize public transportation. Our goal is to streamline bus operations, improve passenger experience, and optimize route management through cutting-edge technology.</center></div>
+
     <h1>
-        <center>About us</center>
+        <center>Our Mission</center>
     </h1>
+
+    <div style="padding: 10px; margin:0 100px; font-size:1.5em;"><center>At Ridesync, we believe in creating a <b>smarter, more efficient, and eco-friendly</b> public transport system. By integrating <b>real-time scheduling, digital ticketing, and user-friendly management tools</b>, we help passengers, administrators, and drivers navigate a seamless transit experience.</center></div>
+
+    <h1>
+        <center>Vision</center>
+    </h1>
+
+    <div style="padding: 10px; margin:0 100px; font-size:1.5em;"><center>To revolutionize urban public transportation with cutting-edge technology</center></div>
+
+    <h1><center>Why Ridesync?</center></h1>
 
     <div class="mission-vision">
         <div class="mission-vision-grid">
             <div class="box">
-                <h2>Mission</h2>
-                <h3>To provide efficient, reliable, and sustainable transportation solutions</h3>
+                <h2>Efficient Bus Operations</h2>
+                <h3>Optimized scheduling and route management to minimize delays and fuel consumption.</h3>
             </div>
             <div class="box">
-                <h2>Vision</h2>
-                <h3>To revolutionize urban public transportation with cutting-edge technology</h3>
+                <h2>Seamless Ticket Booking</h2>
+                <h3>Digital ticketing and seat reservations for enhanced passenger convenience.</h3>
+            </div>
+            <div class="box">
+                <h2>Smart Fleet Management</h2>
+                <h3>Real-time updates on bus availability, driver schedules, and vehicle status.</h3>
+            </div>
+            <div class="box">
+                <h2>Passenger Engagement</h2>
+                <h3>User feedback and complaint handling for continuous service improvement.</h3>
+            </div>
+            <div class="box">
+                <h2>Sustainable Urban Mobility</h2>
+                <h3>Reduced carbon footprint through optimized bus routes and schedules.</h3>
             </div>
         </div>
     </div>

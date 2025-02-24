@@ -1,6 +1,12 @@
 <?php include 'db_config.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
     $new_message = $conn->real_escape_string($_POST['new_message']);
@@ -15,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
             confirmButtonText: 'OK'
         }).then(() => {
 
-            window.location.href = 'somepage.php'; 
+            window.location.href = 'post_message.php'; 
         });
     </script>";    
     } else {
@@ -27,7 +33,83 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
                 confirmButtonText: 'Try Again'
             });
         </script>";    }
+
+        if ($conn->query($sql) === TRUE) {
+            $emails = [];
+            $result = $conn->query("SELECT email FROM users");
+    
+            while ($row = $result->fetch_assoc()) {
+                $admin_emails[] = $row['email'];
+            }
+    
+            if (!empty($admin_emails)) {
+                try {
+                    $mail = new PHPMailer(true);
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'jobsanke26198@gmail.com'; 
+                    $mail->Password = 'iscwzyvhbbanhoov'; 
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 587;
+    
+                    $mail->setFrom('ridysync@outlook.com', 'RideSync');
+                    
+                    foreach ($admin_emails as $email) {
+                        $mail->addAddress($email);
+                    }
+    
+                    $mail->isHTML(true);
+                    $mail->Subject = 'New Message Notification';
+                    $mail->Body = "
+                        <div style='font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px;'>
+                            <h2 style='color: #4CAF50;'>📬 New Message Alert</h2>
+                            <p>A new message has been posted:</p>
+                            <div style='padding: 15px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px;'>
+                                <p style='font-size: 16px; color: #555;'><b>$new_message</b></p>
+                            </div>
+                            <p style='margin-top: 20px;'>Thank you,<br>RIDESYNC</p>
+                        </div>
+                        ";
+    
+                    $mail->send();
+    
+                    echo "<script>
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Message posted and notification sent!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'post_message.php'; 
+                    });
+                    </script>";    
+    
+                } catch (Exception $e) {
+                    echo "<script>
+                    Swal.fire({
+                        title: 'Email Error!',
+                        text: 'Failed to send notification. Mailer Error: {$mail->ErrorInfo}',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    </script>";
+                }
+            }
+        } else {
+            echo "<script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error: " . addslashes($conn->error) . "',
+                icon: 'error',
+                confirmButtonText: 'Try Again'
+            });
+            </script>";    
+        }
+    
 }
+
+    
 
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
