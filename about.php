@@ -61,6 +61,8 @@
         </div>
     </div>
 
+    <?php include 'whatsapp.php'; ?>
+
     <div class="target-audiance">
         <h1>Target Audiance</h1>
         <div class="target-audiance-grid">

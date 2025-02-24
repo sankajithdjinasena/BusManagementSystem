@@ -91,6 +91,7 @@ if (isset($_POST['signup'])) {
         <input style="font-size: 16px;" type="submit" name="signup" value="Sign Up">
     </form>
     <p>Already have an account? <a href="signin.php">Sign In</a></p>
+    <?php include 'whatsapp.php'; ?>
 
     <footer style="margin-top: 100px;">
         <div class="footer-grid">

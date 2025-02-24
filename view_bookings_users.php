@@ -80,5 +80,6 @@
     </table>
     <br>
     <a href="dashboard.php" class="btn-home">Go to Dashboard</a>
+    <?php include 'whatsapp.php'; ?>
 </body>
 </html>

@@ -109,6 +109,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         </tbody>
     </table>
     <br>
+    <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

@@ -161,7 +161,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <p id="p">Kandy</p>
         </div>
     </div>
-
+    <?php include 'whatsapp.php'; ?>
     <footer style="margin-top:100px">
         <div class="footer-grid">
             <div class="footer-box">

@@ -80,6 +80,7 @@ if (isset($_POST['verify_otp'])) {
         <input type="text" name="otp" id="otp" maxlength="6" required>
         <input type="submit" name="verify_otp" value="Verify">
     </form>
+    <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

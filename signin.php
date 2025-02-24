@@ -40,7 +40,8 @@ if (isset($_POST['signin'])) {
                         window.location.href = 'signin.php'; 
                     });
                 };
-                </script>";        }
+                </script>";       
+            }
     } else {
         echo "<script>
         window.onload = function(){
@@ -95,6 +96,7 @@ if (isset($_POST['signin'])) {
         <input type="submit" name="signin" value="Sign In">
     </form>
     <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+    <?php include 'whatsapp.php'; ?>
 
     <footer>
         <div class="footer-grid">

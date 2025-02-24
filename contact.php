@@ -64,7 +64,7 @@
             <p id="p">Kandy</p>
         </div>
     </div>
-
+    <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

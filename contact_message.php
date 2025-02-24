@@ -92,6 +92,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     </table>
     <br>
     <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
-</body>
+    <?php include 'whatsapp.php'; ?>
 
+</body>
 </html>

@@ -39,7 +39,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <div class="box">
                 <div class="box-number">2</div>
                 <h1>Click on Book a Route</h1>
-                <p>Select you route ID from Schedules table, Enter your Name, Phone Number and How many seats need to book. </p>
+                <p>Select you route ID from Schedules table, Enter your Name, Email, Phone Number and How many seats need to book. </p>
             </div>
             <div class="box">
                 <div class="box-number">3</div>
@@ -110,9 +110,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             </div>
         </div>
     </div>
-
+    <?php include 'whatsapp.php'; ?>
     <footer>
-
         <div class="footer-grid">
             <div class="footer-box">
                 <h3>About</h3>

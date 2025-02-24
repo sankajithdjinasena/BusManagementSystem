@@ -158,6 +158,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
     <br>
     <a href="dashboard.php" class="btn-home">Go to Dashboard</a>
+    <?php include 'whatsapp.php'; ?>
+
 
     <div>
         <h2>Available Routes</h2>

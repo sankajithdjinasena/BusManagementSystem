@@ -118,6 +118,7 @@ if (isset($_POST['send_otp'])) {
         <input type="email" name="email" id="email" required>
         <input type="submit" name="send_otp" value="Send OTP">
     </form>
+    <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

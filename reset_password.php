@@ -93,6 +93,7 @@ if (isset($_POST['update_password'])) {
 
     <input type="submit" name="update_password" value="Update Password">
 </form>
+<?php include 'whatsapp.php'; ?>
 
 <footer>
     <div class="footer-grid">
