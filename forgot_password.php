@@ -33,7 +33,7 @@ if (isset($_POST['send_otp'])) {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('ridysync@outlook.com', 'RideSync');
+            $mail->setFrom('ridysync@outlook.com', 'RIDESYNC');
             $mail->addAddress($email); 
 
             $mail->isHTML(true);

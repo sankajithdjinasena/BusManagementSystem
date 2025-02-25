@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
     
-                    $mail->setFrom('ridysync@outlook.com', 'RideSync');
+                    $mail->setFrom('ridysync@outlook.com', 'RIDESYNC');
                     
                     foreach ($admin_emails as $email) {
                         $mail->addAddress($email);

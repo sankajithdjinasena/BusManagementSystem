@@ -69,7 +69,15 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     
                 $booking_id = $conn->insert_id;
                 $conn->query("UPDATE routes SET available_seats = $new_seats WHERE id = $route_id");
-    
+                
+                $routeQuery = $conn->query("SELECT departure_place,time,date, arrival_place FROM routes WHERE id = $route_id");
+                $routeData = $routeQuery->fetch_assoc();
+                $departure_place = $routeData['departure_place'];
+                $arrival_place = $routeData['arrival_place'];
+                $time = $routeData['time'];
+                $date = $routeData['date'];
+
+
                 try {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com'; 
@@ -97,11 +105,27 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                     <table style='width: 100%; border-collapse: collapse;'>
                                         <tr>
                                             <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Booking ID</strong></td>
-                                            <td style='border: 1px solid #ddd; padding: 8px;'>$booking_id</td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'><b>$booking_id</b></td>
                                         </tr>
                                         <tr>
                                             <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Route ID</strong></td>
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$route_id</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Bus Departure place</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$departure_place</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Bus Arrival place</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$arrival_place</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Date</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$date</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Time</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$time</td>
                                         </tr>
                                         <tr>
                                             <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Seats Booked</strong></td>
@@ -116,12 +140,12 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$customer_phone</td>
                                         </tr>
                                         <tr>
-                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Email</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Your Email</strong></td>
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$email</td>
                                         </tr>
                                     </table>
 
-                                    <p style='margin-top: 20px;'>We look forward to serving you! 🚗</p>
+                                    <p style='margin-top: 20px;'>We look forward to serving you! </p>
                                     <p>Best regards,<br><strong>RIDESYNC</strong></p>
                                 </div>
                             </body>
