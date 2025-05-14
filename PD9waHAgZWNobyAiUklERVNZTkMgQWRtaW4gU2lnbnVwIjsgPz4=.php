@@ -25,10 +25,12 @@ if (isset($_POST['signup'])) {
 
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $result = $conn->query($sql);
+        $sql_email = "SELECT * FROM users WHERE email = '$email'";
+        $sql_username = "SELECT * FROM users WHERE username = '$username'";
+        $result_email = $conn->query($sql_email);
+        $result_username = $conn->query($sql_username);
 
-        if ($result->num_rows > 0) {
+        if ($result_email->num_rows > 0) {
             echo "<script>
             window.onload = function() {
                 Swal.fire({
@@ -39,7 +41,19 @@ if (isset($_POST['signup'])) {
                 });
             };
         </script>";
-        } else {
+        } elseif ($result_username->num_rows > 0) {
+            echo "<script>
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Warning!',
+                    text: 'Username already exists!',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            };
+        </script>";
+        }
+        else {
             $sql = "INSERT INTO users (username, email, password, is_admin) 
                     VALUES ('$username', '$email', '$hashed_password', 1)";
 

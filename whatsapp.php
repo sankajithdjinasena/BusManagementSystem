@@ -14,7 +14,6 @@
             right: 20px; 
             background-color: #25D366; 
             color: white;
-            color: white;
             padding: 15px;
             border-radius: 50%;
             font-size: 34px;

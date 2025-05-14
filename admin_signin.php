@@ -92,10 +92,11 @@ if (isset($_POST['signin'])) {
 
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required >
-
-        <input type="submit" name="signin" value="Sign In">
+        <a id="forgot_password" href="forgot_password.php" style="color: blue; text-decoration: none;">Forgot Password?</a><br>
+ 
+        <input style="font-size: 16px;" type="submit" name="signin" value="Sign In">
     </form>
-
+    <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">
             <div class="footer-box">

@@ -170,7 +170,7 @@ if (!isset($_SESSION['admin_id'])) {
                     <a href="register_route.php">Register Route</a>
                 </div>
                 <div class="card">
-                    <a href="admin_signup.php">Register Admin</a>
+                    <a href="PD9waHAgZWNobyAiUklERVNZTkMgQWRtaW4gU2lnbnVwIjsgPz4=.php">Register Admin</a>
                 </div>
             </div>
         </div>
