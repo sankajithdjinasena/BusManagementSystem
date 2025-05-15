@@ -79,7 +79,13 @@ if (isset($_POST['verify_otp'])) {
         <label for="otp">Enter OTP:</label>
         <input type="text" name="otp" id="otp" maxlength="6" required>
         <input type="submit" name="verify_otp" value="Verify">
+        <a href="signin.php" style="text-align:center; text-decoration:none;">Back to Sign In</a>
     </form>
+    <div class="otp-info">
+        <p>Enter the OTP sent to your registered email: <strong><?php echo $_SESSION['reset_email']; ?></strong></p>
+        <p>If you didn't receive the OTP, please check your spam folder or <a href="forgot_password.php">request a new one</a>.</p>
+        
+    </div>
     <?php include 'whatsapp.php'; ?>
     <footer>
         <div class="footer-grid">

@@ -92,7 +92,7 @@ if (isset($_POST['signin'])) {
 
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required >
-        <a id="forgot_password" href="forgot_password.php" style="color: blue; text-decoration: none;">Forgot Password?</a><br>
+        <a id="forgot_password" href="forgot_password_admin.php" style="color: blue; text-decoration: none;">Forgot Password?</a><br>
  
         <input style="font-size: 16px;" type="submit" name="signin" value="Sign In">
     </form>
@@ -113,9 +113,9 @@ if (isset($_POST['signin'])) {
             <div class="footer-box">
                 <h3>Links</h3>
                 <ul>
-                    <li><a id="active" href="home.php">Home</a></li>
+                    <li><a  href="home.php">Home</a></li>
                     <li><a href="schedules.php">Schedules</a></li>
-                    <li><a href="booking.php">Booking</a></li>
+                    <li><a id="active" href="booking.php">Booking</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
                 </ul>

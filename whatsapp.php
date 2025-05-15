@@ -31,7 +31,6 @@
         .whatsapp-logo:hover {
             background-color:rgb(7, 235, 18);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-
         }
 
     </style>

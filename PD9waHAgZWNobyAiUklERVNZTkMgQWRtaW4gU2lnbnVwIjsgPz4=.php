@@ -131,7 +131,7 @@ if (isset($_POST['signup'])) {
         <label for="confirm_password">Confirm Password:</label>
         <input type="password" name="confirm_password" id="confirm_password" required autocomplete="off">
 
-        <input type="submit" name="signup" value="Sign Up">
+        <input style="font-size: 16px;" type="submit" name="signup" value="Sign Up">
     </form>
     <p>Already have an account? <a href="admin_signin.php">Sign In</a></p>
 
@@ -154,7 +154,7 @@ if (isset($_POST['signup'])) {
                 <ul>
                     <li><a href="home.php">Home</a></li>
                     <li><a href="schedules.php">Schedules</a></li>
-                    <li><a href="booking.php">Booking</a></li>
+                    <li><a id="active" href="booking.php">Booking</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
                 </ul>
