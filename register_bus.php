@@ -10,6 +10,15 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+    <style>
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,16 +32,37 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <input type="text" name="engine_number" required>
 
             <label>Owner ID:</label>
-            <input type="text" name="owner_id" required>
+            <select name="owner_id" required>
+                <option value="">-- Select Owner ID --</option>
+                <?php
+                $query = "SELECT id, name FROM bus_owners"; 
+                $result = $conn->query($query);
+                
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='{$row['id']}'>{$row['id']} - {$row['name']}</option>";
+                }
+                ?>
+            </select>
 
             <label>Driver ID:</label>
-            <input type="text" name="driver_id" required>
+            <select name="driver_id" required>
+                <option value="">-- Select Driver ID --</option>
+                <?php
+                $query = "SELECT id, name FROM drivers"; 
+                $result = $conn->query($query);
+                
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='{$row['id']}'>{$row['id']} - {$row['name']}</option>";
+                }
+                ?>
+            </select>
 
             <label>Route:</label>
             <input type="text" name="route">
 
             <label>Capacity:</label>
-            <input type="number" name="capacity">
+            <p style="color:red">Max : 54</p>
+            <input type="number" name="capacity" min="1" max="54" required>
 
             <input type="submit" name="submit" value="Register">
         </form>

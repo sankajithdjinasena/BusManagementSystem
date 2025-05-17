@@ -26,7 +26,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             echo "<option value='{$row['id']}'>{$row['id']}";
         }
         ?>
-</select>
+    </select>
         <label>Your Name:</label>
         <input type="text" name="customer_name" required autocomplete="off">
         <label>Your Phone:</label>

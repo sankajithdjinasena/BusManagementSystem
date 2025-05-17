@@ -10,6 +10,16 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+    <style>
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
 </head>
 <body>
     <div class="form">
@@ -34,9 +44,20 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <input type="text" name="duration" required>
         
         <label>Bus ID:</label>
-        <input type="number" name="bus_id" required>
+        <select name="bus_id" required>
+                <option value="">-- Select Bus ID --</option>
+                <?php
+                $query = "SELECT id, bus_number FROM buses"; 
+                $result = $conn->query($query);
+                
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='{$row['id']}'>{$row['id']} - {$row['bus_number']}</option>";
+                }
+                ?>
+            </select>
         
         <label>Total Seats:</label>
+        <p style="color:red">Max : 54</p>
         <input type="number" name="total_seats" required>
         
         <input type="submit" name="submit" value="Register Route">

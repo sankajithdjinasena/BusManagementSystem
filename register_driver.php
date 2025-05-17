@@ -43,7 +43,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         $nic = $_POST['nic'];
 
         try {
-            $sql = "INSERT INTO drivers (name, email, phone, license_number) VALUES ('$name', '$email', '$phone', '$license_number')";
+            $sql = "INSERT INTO drivers (name, phone, license_number) VALUES ('$name',  '$phone', '$license_number')";
             
             if ($conn->query($sql) === TRUE) {
                 $driver_id = $conn->insert_id;
