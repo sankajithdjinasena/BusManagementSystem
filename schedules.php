@@ -13,6 +13,18 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <link rel="stylesheet" href="style/footer.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+    <style>
+        .table-container{
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -41,11 +53,13 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <label for="filter_date">Date:</label>
         <input type="date" name="filter_date" id="filter_date">
         <button type="submit">Filter</button>
-    </form>
+        <button type="reset" onclick="window.location='schedules.php'">Clear</button>
 
+    </form>
+    <div class="table-container">
     <table>
         <link rel="stylesheet" href="style/schedule_table_responsive.css">
-        <thead >
+        <thead style="position: sticky; top: 0;">
             <tr>
                 <th id="firsthead"><center>Route ID</center></th>
                 <th><center>Date</center></th>
@@ -69,6 +83,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                     JOIN buses ON routes.bus_id = buses.id";
 
             $conditions = [];
+            $conditions[] = "date >= CURDATE()";
+
             if (!empty($filter_bus)) {
                 $conditions[] = "buses.bus_number LIKE '%$filter_bus%'";
             }
@@ -85,8 +101,6 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             if (count($conditions) > 0) {
                 $sql .= " WHERE " . implode(' AND ', $conditions);
             }
-            $sql .= " WHERE date >= CURDATE()";
-
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -108,6 +122,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             ?>
         </tbody>
     </table>
+    </div>
     <br>
     <?php include 'whatsapp.php'; ?>
     <footer>

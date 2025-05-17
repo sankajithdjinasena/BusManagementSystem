@@ -7,7 +7,7 @@
 <head>
     <title>Book a Route</title>
 </head>
-    <link rel="stylesheet" href="style/book_route.css">
+    <link rel="stylesheet" href="style/book_routes.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
 
@@ -21,6 +21,7 @@
         <label>Your Phone:</label>
         <input type="text" name="customer_phone" required autocomplete="off">
         <label>Your Email:</label>
+        Enter your email address to receive booking confirmation.   
         <input type="text" name="email" required autocomplete="off">
         <label>Get in location</label>
         <input type="text" name="get_in_location" required autocomplete="off">

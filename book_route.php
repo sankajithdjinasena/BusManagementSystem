@@ -32,6 +32,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <label>Your Phone:</label>
         <input type="text" name="customer_phone" required autocomplete="off">
         <label>Your Email:</label>
+        Enter your email address to receive booking confirmation.
         <input type="text" name="email" required autocomplete="off">
         <label>Get in location</label>
         <input type="text" name="get_in_location" required autocomplete="off">

@@ -65,7 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <label>Driver ID:</label>
         <input type="text" name="driver_id" value="<?php echo $row['driver_id']; ?>" required><br>
-
+        <select name="driver_id" required>
+            <option value="">-- Select Driver ID --</option>
+            <?php
+            $query = "SELECT id, name FROM drivers"; 
+            $result = $conn->query($query);
+            
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='{$row['id']}'>{$row['id']} - {$row['name']}</option>";
+            }
+            ?>
+        </select>
         <label>Route:</label>
         <input type="text" name="route" value="<?php echo $row['route']; ?>" required><br>
 
