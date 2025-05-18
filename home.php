@@ -1,4 +1,4 @@
-<?php include 'db_config.php'; 
+<?php include 'db_config.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 ?>
 
@@ -25,37 +25,36 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <link rel="stylesheet" href="style/message.css">
 
     <style>
-        
         .hover-underline {
-        font-size: 2rem;
-        color:rgb(0, 0, 0);
-        position: relative;
-        display: inline-block;
-        margin-bottom: 10px;
+            font-size: 2rem;
+            color: rgb(0, 0, 0);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .hover-underline::after,
         .hover-underline::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(to right, #ff0000, #00ffff);
-        bottom: -5px;
-        left: 0;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.4s ease-out;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #ff0000, #00ffff);
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease-out;
         }
 
         .hover-underline::before {
-        top: -5px;
-        transform-origin: left;
+            top: -5px;
+            transform-origin: left;
         }
 
         .hover-underline:hover::after,
         .hover-underline:hover::before {
-        transform: scaleX(1);
+            transform: scaleX(1);
         }
     </style>
 
@@ -84,7 +83,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                     <p>Manage your bus schedules, routes, and bookings efficiently.</p>
                     <p id="bookp">Book Your Ride </p>
                 </div>
-                
+
                 <div class="classB-book">
                     <a href="booking.php">Book</a>
                 </div>
@@ -100,28 +99,29 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         ?>
 
         <div class="messsage-container" style="width: 80%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                                margin: 20px auto;
+                                                background-color: #fff;
+                                                padding: 20px;
+                                                border-radius: 8px;
+                                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
             <ul style="list-style-type: none;
-    padding: 0;">
+                        padding: 0;">
                 <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
                         <li class="message-item" style="cursor: pointer;
-    font-size: 20px;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-left: 5px solid #4CAF50;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s ease;
-    transition: 0.3s ease; ">
+                                                        font-size: 20px;
+                                                        padding: 10px;
+                                                        margin-bottom: 15px;
+                                                        border-left: 5px solid #4CAF50;
+                                                        background-color: #f9f9f9;
+                                                        transition: background-color 0.3s ease;
+                                                        transition: 0.3s ease; ">
                             <?php echo $row['message']; ?>
                             <small style="display: block;
-    color: #888;
-    font-size: 14px;
-    margin-top: 5px;">(Posted on: <?php echo $row['created_at']; ?>)</small>
+                                                        color: #888;
+                                                        font-size: 14px;
+                                                        margin-top: 5px;">
+    (Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
                     <?php } ?>
                 <?php } else { ?>

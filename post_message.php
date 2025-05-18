@@ -9,6 +9,8 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
+        $new_message = str_replace(["\r", "\n"], '', $new_message);
+
     $new_message = $conn->real_escape_string($_POST['new_message']);
 
     $sql = "INSERT INTO admin_messages (message) VALUES ('$new_message')";
@@ -35,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_message'])) {
         </script>";    
     }
 
-    $new_message = str_replace(["\r", "\n"], '', $new_message);
 
     $emails = [];
     $result = $conn->query("SELECT email FROM users");
