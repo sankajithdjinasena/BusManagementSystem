@@ -5,6 +5,18 @@
     <title>View Routes</title>
     <link rel="stylesheet" href="style/view_route.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+    
+    <style>
+        .table-container{
+            max-height: 750px;
+            overflow-y: auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+    </style>
 
 </head>
 <body>
@@ -18,8 +30,10 @@
         <label for="filter_date">Date:</label>
         <input type="date" name="filter_date" id="filter_date">
         <button type="submit">Filter</button>
-    </form>
+        <button type="reset" onclick="window.location='view_routes.php'">Clear</button>
 
+    </form>
+    <div class="table-container">
     <table>
         <thead>
             <tr>
@@ -82,6 +96,7 @@
             ?>
         </tbody>
     </table>
+    </div>
     <br>
     <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
 

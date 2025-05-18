@@ -12,6 +12,18 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 <link rel="stylesheet" href="style/book_routes.css">
 <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+<style>
+    .table-container{
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+</style>
+
 <body>
     <h2>Book a Route</h2>
     <form class="form1" action="book_route.php" method="POST">
@@ -222,66 +234,69 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <label for="filter_date">Date:</label>
             <input type="date" name="filter_date" id="filter_date">
             <button type="submit">Filter</button>
+            <button type="reset" onclick="window.location='book_route.php'">Clear</button>
         </form>
+        <div class="table-container">        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Route ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Departure Place</th>
+                        <th>Arrival Place</th>
+                        <th>Duration</th>
+                        <th>Bus Number</th>
+                        <th>Available Seats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $filter_departure = isset($_GET['filter_departure']) ? $_GET['filter_departure'] : '';
+                    $filter_arrival = isset($_GET['filter_arrival']) ? $_GET['filter_arrival'] : '';
+                    $filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Route ID</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Departure Place</th>
-                    <th>Arrival Place</th>
-                    <th>Duration</th>
-                    <th>Bus Number</th>
-                    <th>Available Seats</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $filter_departure = isset($_GET['filter_departure']) ? $_GET['filter_departure'] : '';
-                $filter_arrival = isset($_GET['filter_arrival']) ? $_GET['filter_arrival'] : '';
-                $filter_date = isset($_GET['filter_date']) ? $_GET['filter_date'] : '';
+                    $sql = "SELECT routes.id, date, time, departure_place, arrival_place, bus_id, total_seats, duration, available_seats, buses.bus_number 
+                    FROM routes
+                    JOIN buses ON routes.bus_id = buses.id";
 
-                $sql = "SELECT routes.id, date, time, departure_place, arrival_place, bus_id, total_seats, duration, available_seats, buses.bus_number 
-                FROM routes
-                JOIN buses ON routes.bus_id = buses.id";
+                    $conditions = [];
+                    $conditions[] = "date >= CURDATE()";
 
-                $conditions = [];
-                if (!empty($filter_departure)) {
-                    $conditions[] = "departure_place LIKE '%$filter_departure%'";
-                }
-                if (!empty($filter_arrival)) {
-                    $conditions[] = "arrival_place LIKE '%$filter_arrival%'";
-                }
-                if (!empty($filter_date)) {
-                    $conditions[] = "date = '$filter_date'";
-                }
-                if (count($conditions) > 0) {
-                    $sql .= " WHERE " . implode(' AND ', $conditions);
-                }
-                $sql .= " WHERE date >= CURDATE()";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                        <td id='firstrow'data-title='Route ID'>{$row['id']}</td>
-                        <td data-title='Date'>{$row['date']}</td>
-                        <td data-title='Time'>{$row['time']}</td>
-                        <td data-title='Departure Place'>{$row['departure_place']}</td>
-                        <td data-title='Arrival Place'>{$row['arrival_place']}</td>
-                        <td data-title='Duration'>{$row['duration']}</td>
-                        <td data-title='Bus Number'>{$row['bus_number']}</td>
-                        <td data-title='Available Seats'>{$row['available_seats']}</td>
-                      </tr>";
+                    if (!empty($filter_departure)) {
+                        $conditions[] = "departure_place LIKE '%$filter_departure%'";
                     }
-                } else {
-                    echo "<tr><td colspan='9'>No routes available.</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                    if (!empty($filter_arrival)) {
+                        $conditions[] = "arrival_place LIKE '%$filter_arrival%'";
+                    }
+                    if (!empty($filter_date)) {
+                        $conditions[] = "date = '$filter_date'";
+                    }
+                    if (count($conditions) > 0) {
+                        $sql .= " WHERE " . implode(' AND ', $conditions);
+                    }
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                            <td id='firstrow'data-title='Route ID'>{$row['id']}</td>
+                            <td data-title='Date'>{$row['date']}</td>
+                            <td data-title='Time'>{$row['time']}</td>
+                            <td data-title='Departure Place'>{$row['departure_place']}</td>
+                            <td data-title='Arrival Place'>{$row['arrival_place']}</td>
+                            <td data-title='Duration'>{$row['duration']}</td>
+                            <td data-title='Bus Number'>{$row['bus_number']}</td>
+                            <td data-title='Available Seats'>{$row['available_seats']}</td>
+                        </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='9'>No routes available.</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 <script>

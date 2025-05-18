@@ -10,6 +10,17 @@
     <link rel="stylesheet" href="style/book_routes.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
 
+    <style>
+        .table-container{
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+    </style>
 
 <body>
     <h2>Book a Route</h2>
@@ -102,8 +113,9 @@
             <label for="filter_date">Date:</label>
             <input type="date" name="filter_date" id="filter_date">
             <button type="submit">Filter</button>
+            <button type="reset" onclick="window.location='book_route_admin.php'">Clear</button>
         </form>
-
+        <div class="table-container">
         <table>
             <thead>
                 <tr>
@@ -128,6 +140,8 @@
                 JOIN buses ON routes.bus_id = buses.id";
 
                 $conditions = [];
+                $conditions[] = "date >= CURDATE()";
+
                 if (!empty($filter_departure)) {
                     $conditions[] = "departure_place LIKE '%$filter_departure%'";
                 }
@@ -140,7 +154,6 @@
                 if (count($conditions) > 0) {
                     $sql .= " WHERE " . implode(' AND ', $conditions);
                 }
-                $sql .= " WHERE date >= CURDATE()";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -162,6 +175,7 @@
                 ?>
             </tbody>
         </table>
+        </div>
     </div>
 </body>
 <script>

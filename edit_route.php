@@ -62,7 +62,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Update Record</button>
     </form>
     <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+    <div class="table-container">
 
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Bus Number</th>
+                <th>Route</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $filter = isset($_GET['filter_bus']) ? $_GET['filter_bus'] : '';
+            $sql = "SELECT * FROM buses";
+            if (!empty($filter)) {
+                $sql .= " WHERE bus_number LIKE '%$filter%'";
+            }
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td id='firstrow' data-title='ID'>{$row['id']}</td>
+                        <td data-title='Bus Number'>{$row['bus_number']}</td>
+                        <td data-title='Route'>{$row['route']}</td>
+                      </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    </div>
 </body>
 
 </html>

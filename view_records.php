@@ -13,6 +13,15 @@
         border-radius: 5px;
         font-size: 14px;
         }
+        .table-container{
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }        
     </style>
     <title>View Records</title>
 </head>
@@ -25,6 +34,7 @@
         <input type="text" name="filter_bus_owner" id="filter_bus_owner" placeholder="Enter NIC">
         <button type="submit">Filter</button>
     </form>
+    <div class="table-container">
     <table>
         <thead>
             <tr>
@@ -59,13 +69,14 @@
             ?>
         </tbody>
     </table>
-
+    </div>
     <h2>Drivers</h2>
     <form method="GET" action="">
         <label for="filter_driver">Filter by License:</label>
         <input type="text" name="filter_license" id="filter_driver" placeholder="Enter License No:">
         <button type="submit">Filter</button>
     </form>
+    <div class="table-container">
     <table>
         <thead>
             <tr>
@@ -99,6 +110,7 @@
             ?>
         </tbody>
     </table>
+    </div>
 
     <h2>Buses</h2>
     <form method="GET" action="">
@@ -106,6 +118,7 @@
         <input type="text" name="filter_bus" id="filter_bus" placeholder="Enter bus number">
         <button type="submit">Filter</button>
     </form>
+    <div class="table-container">
     <table>
         <thead>
             <tr>
@@ -139,7 +152,8 @@
             ?>
         </tbody>
     </table>
-    <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+    </div>
+    <a href="admin_dashboard.php" class="btn-home" >Go to Dashboard</a>
 
 </body>
 
