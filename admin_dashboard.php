@@ -256,9 +256,12 @@ if (!isset($_SESSION['admin_id'])) {
         <?php $messages = $conn->query("SELECT * FROM contacts WHERE replied = 'Pending' ORDER BY created_at  DESC LIMIT 5 ");
         ?>
         <div class="messsage-container" style="text-align: left;">
-            sort by: latest message
+            <?php if ($messages->num_rows == 0) { ?>
+                <h3 style="text-align: center; color:black">No contact messages</h3>
+            <?php } ?>
             <ol>
                 <?php while ($row = $messages->fetch_assoc()) { ?>
+                    <p>sort by: latest message</p>
                     <li class="messsage-item"><?php echo $row['message']; ?><br>
                         <small>Name : <?php echo $row['name']; ?></small><br>
                         <small>Email : <?php echo $row['email']; ?></small><br>
@@ -312,5 +315,5 @@ if (!isset($_SESSION['admin_id'])) {
         </div>
     </footer>
 </body>
-
+<script src="divtransition.js"></script>
 </html>

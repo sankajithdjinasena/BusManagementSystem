@@ -175,5 +175,5 @@ if (isset($_POST['signup'])) {
         </div>
     </footer>
 </body>
-
+<script src="divtransition.js"></script>
 </html>

@@ -8,7 +8,11 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 <style>
     .message-item:hover {
         background-color: #e8f5e9;
-        transform: scale(1.05);
+        transform: scale(1.015);
+    }
+
+    textarea {
+        font-family: Arial, Helvetica, sans-serif;
     }
 </style>
 
@@ -44,9 +48,9 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <div class="classA-start">
             <div class="classA-Image"><img src="Images/LogoN.png" alt="RIDESYNC Logo"></div>
             <div class="classA-content">
-                <h1>WELCOME TO THE RIDESYNC</h1>
-                    <p>Manage your bus schedules, routes, and bookings efficiently.</p>
-                    <p id="bookp" style="font-size: 30px; font-weight:bold;">Book Your Ride </p>
+<h1 style="font-size: 32px; text-align: center; color: white; background-color:rgb(0, 0, 0); padding: 15px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); font-family: Georgia, serif;">WELCOME TO THE RIDESYNC</h1>
+                <p>Manage your bus schedules, routes, and bookings efficiently.</p>
+                <p id="bookp" style="font-size: 30px; font-weight:bold;">Book Your Ride </p>
 
                 <div class="classB-book">
                     <a href="booking.php">Book</a>
@@ -73,8 +77,10 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 <?php if ($messages->num_rows > 0) { ?>
                     <?php while ($row = $messages->fetch_assoc()) { ?>
                         <li class="message-item" style="cursor: pointer;
+                        
+                                                        border-radius: 5px;
+                                                        padding: 15px 25px;
                                                         font-size: 20px;
-                                                        padding: 10px;
                                                         margin-bottom: 15px;
                                                         border-left: 5px solid #4CAF50;
                                                         background-color: #f9f9f9;
@@ -85,13 +91,13 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                                         color: #888;
                                                         font-size: 14px;
                                                         margin-top: 5px;">
-    (Posted on: <?php echo $row['created_at']; ?>)</small>
+                                (Posted on: <?php echo $row['created_at']; ?>)</small>
                         </li>
                     <?php } ?>
                 <?php } else { ?>
-                    <li class="message-item">
-                        <h3 style="text-align: center;">No announcements</h3>
-                    </li>
+                    <h1>
+                        <center>No Announcements</center>
+                    </h1>
                 <?php } ?>
             </ul>
         </div>
@@ -205,5 +211,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         </div>
     </footer>
 </body>
+
+<script src="divtransition.js" text="text/javascript"></script>
 
 </html>

@@ -137,4 +137,5 @@ if (isset($_POST['signin'])) {
         </div>
     </footer>
 </body>
+<script src="divtransition.js"></script>
 </html>

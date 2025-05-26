@@ -172,4 +172,5 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <script>
     document.getElementById("filter_date").min = new Date().toISOString().split("T")[0];
     </script>
+    <script src="divtransition.js"></script>
 </html>

@@ -108,5 +108,5 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
 </body>
-
+<script src="divtransition.js"></script>
 </html>

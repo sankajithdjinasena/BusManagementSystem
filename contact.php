@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/footer.css">
     <link rel="stylesheet" href="style/contact.css">
+
+    <style>
+        textarea{
+    font-family: Arial, Helvetica, sans-serif;
+}
+    </style>
 </head>
 
 <body>
@@ -107,4 +113,5 @@
         </div>
     </footer>
 </body>
+<script src="divtransition.js"></script>
 </html>
