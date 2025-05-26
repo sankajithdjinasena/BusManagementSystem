@@ -24,40 +24,6 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <link rel="stylesheet" href="style/contact.css">
     <link rel="stylesheet" href="style/message.css">
 
-    <style>
-        .hover-underline {
-            font-size: 2rem;
-            color: rgb(0, 0, 0);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .hover-underline::after,
-        .hover-underline::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, #ff0000, #00ffff);
-            bottom: -5px;
-            left: 0;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease-out;
-        }
-
-        .hover-underline::before {
-            top: -5px;
-            transform-origin: left;
-        }
-
-        .hover-underline:hover::after,
-        .hover-underline:hover::before {
-            transform: scaleX(1);
-        }
-    </style>
-
 </head>
 
 <body>
@@ -79,10 +45,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <div class="classA-Image"><img src="Images/LogoN.png" alt="RIDESYNC Logo"></div>
             <div class="classA-content">
                 <h1>WELCOME TO THE RIDESYNC</h1>
-                <div class="hover-underline">
                     <p>Manage your bus schedules, routes, and bookings efficiently.</p>
-                    <p id="bookp">Book Your Ride </p>
-                </div>
+                    <p id="bookp" style="font-size: 30px; font-weight:bold;">Book Your Ride </p>
 
                 <div class="classB-book">
                     <a href="booking.php">Book</a>

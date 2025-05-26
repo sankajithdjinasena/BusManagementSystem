@@ -1,5 +1,13 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/SMTP.php';
+
 include 'db_config.php';
+
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
 if (isset($_POST['signup'])) {
@@ -11,27 +19,79 @@ if (isset($_POST['signup'])) {
     try {
         $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
         $conn->query($sql);
-    
-        echo "<script>
-        window.onload = function() {
-            Swal.fire({
-                title: 'Success!',
-                text: 'User registered successfully!',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = 'signin.php'; 
-            });
-        };
-        </script>";
-    
+
+        $mail = new PHPMailer(true);
+        try {
+
+            echo "<script>
+                window.onload = function() {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User registered successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'signin.php'; 
+                    });
+                };
+                </script>";
+
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com'; 
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'jobsanke26198@gmail.com';
+            $mail->Password   = 'iscwzyvhbbanhoov'; 
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = 587;
+
+            $mail->setFrom('ridesync@outlook.com', 'RideSync');
+            $mail->addAddress($email, $username);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Welcome to RideSync!';
+            $mail->Body = "
+            <div style='font-family: Arial, sans-serif; color: #333; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; max-width: 600px; margin: auto;'>
+                <h2 style='color: #4CAF50; margin-top: 20px;'>📬 Welcome to RideSync, $username!</h2>
+                <p style='font-size: 16px; color: #555;'>Thank you for signing up with RideSync! We're excited to have you on board.</p>
+
+                <p style='font-size: 15px;'>Your account has been successfully created. Here are your login details:</p>
+                <p style='font-size: 15px;'><strong>Username:</strong> $username</p>
+                <p style='font-size: 15px;'><strong>Email:</strong> $email</p>
+
+
+                <p style='margin-top: 30px; font-size: 15px;'>We're glad to have you on board. You can now manage bookings, schedules, and much more.</p>
+
+                <p style='margin-top: 40px; font-size: 13px; color: #999;'>If you did not sign up for RideSync, please contact us.</p>
+
+                <h3>Contact</h3>
+                <Telephone:>Email : ridesync@outlook.com \nTelephone: +91 - 0123456789</p>
+
+                <p style='margin-top: 20px;'>Thank you,<br>RideSync Team</p>
+            </div>
+            ";
+
+            $mail->send();
+        } catch (Exception $e) {
+                echo "<script>
+                    window.onload = function() {
+                        Swal.fire({
+                            title: 'Email Error!',
+                            text: 'Message could not be sent. Mailer Error: " . addslashes($mail->ErrorInfo) . "',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    };
+                </script>";
+            return;
+        }
+
     } catch (mysqli_sql_exception $e) {
-        if ($e->getCode() == 1062) {  
+        if ($e->getCode() == 1062) {
             $errorMessage = "Username or Email already exists!";
         } else {
             $errorMessage = "Database Error: " . addslashes($e->getMessage());
         }
-    
+
         echo "<script>
             window.onload = function(){
                 Swal.fire({
@@ -43,9 +103,9 @@ if (isset($_POST['signup'])) {
             };
         </script>";
     }
-    
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

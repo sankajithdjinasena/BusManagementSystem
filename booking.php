@@ -29,6 +29,30 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     </nav>
 
     <div class="classB">
+
+        <h1>HOW TO SIGN UP</h1>
+        <div class="classB-grid">
+            <div class="box">
+                <div class="box-number">1</div>
+                <h1>Register</h1>
+                <p>Click on Sign up button.</p>
+            </div>
+            <div class="box">
+                <div class="box-number">2</div>
+                <h1>Enter you credential</h1>
+                <p>Enter you Name, Email and Password.</p>
+            </div>
+            <div class="box">
+                <div class="box-number">3</div>
+                <h1>Login to Account</h1>
+                <p>After Creation of your account. Login into Your account to book you ride.</p>
+            </div>
+        </div>
+        <br>
+        <div class="classB-book">
+            <a href="signup.php">Sign Up</a>
+        </div>
+        <br><br><br>
         <h1>HOW TO BOOK BUS</h1>
         <div class="classB-grid">
             <div class="box">
@@ -52,33 +76,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <a href="signin.php">Sign In</a>
         </div>
 
-        <br><br>
+        <br><br>        
 
-        <h1>HOW TO BOOK BUS</h1>
-        <div class="classB-grid">
-            <div class="box">
-                <div class="box-number">1</div>
-                <h1>Register</h1>
-                <p>Click on Sign up button.</p>
-
-            </div>
-            <div class="box">
-                <div class="box-number">2</div>
-                <h1>Enter you credential</h1>
-                <p>Enter you name, Email and Password.</p>
-            </div>
-            <div class="box">
-                <div class="box-number">3</div>
-                <h1>Login to Account</h1>
-                <p>After Creation of your account. Login into Your account to book you ride.</p>
-            </div>
-        </div>
-
-        <br>
-
-        <div class="classB-book">
-            <a href="signup.php">Sign Up</a>
-        </div>
 
         <br><br>
 
@@ -92,7 +91,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <div class="box">
                 <div class="box-number">2</div>
                 <h1>Click on View Bookings</h1>
-                <p>After clicked, Enter your phone number when you used in booking in enter pannel.</p>
+                <p>After clicked, Enter your phone number when you used in booking and registered email in enter pannel.</p>
             </div>
             <div class="box">
                 <div class="box-number">3</div>
@@ -108,6 +107,20 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 <h1 id="deletemessage"> You can Contact us for delete your bookings </h1>
                 <p><b>Please Contact us using registered email or phone number that you used in booking</b></p>
             </div>
+        </div>
+        <div class="classB-grid">
+            <div class="box">
+                <h1>Board the Bus</h1>
+                <p>Simply show your booking at the entrance. <strong>You can pay after getting into the bus.</strong></p>
+            </div>
+        </div>
+        <div class="classB-grid">
+            <div class="box">
+                <h1>Get Your Seat</h2>
+                <p>Once inside, your seat will be assigned. Enjoy a smooth and organized boarding process!</p>
+            </div>
+        </div>
+    
         </div>
     </div>
     <?php include 'whatsapp.php'; ?>
