@@ -1,5 +1,4 @@
 <?php include 'db_config.php'; 
-include 'backbtn.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 ?>
 
@@ -32,14 +31,19 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
     <select name="route_id" required>
         <option value="">-- Select Route --</option>
         <?php
-        $query = "SELECT id, route_name FROM routes"; 
+        $query = "SELECT id, route_name,departure_place,arrival_place FROM routes"; 
         $result = $conn->query($query);
         
         while ($row = $result->fetch_assoc()) {
-            echo "<option value='{$row['id']}'>{$row['id']}";
+            $id = $row['id'];
+            $departure = $row['departure_place'];
+            $arrival = $row['arrival_place'];
+            
+            echo "<option value='{$id}'>Route {$id}: {$departure} → {$arrival}</option>";
         }
         ?>
     </select>
+        <p><center><b style="color:red">Check the Time and Date from table by Route ID</b></center></p>
         <label>Your Name:</label>
         <input type="text" name="customer_name" required autocomplete="off">
         <label>Your Phone:</label>
@@ -90,7 +94,22 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                 $arrival_place = $routeData['arrival_place'];
                 $time = $routeData['time'];
                 $date = $routeData['date'];
+                
 
+                $routeQuery_bus = $conn->query("SELECT routes.departure_place,routes.time,routes.date,routes.arrival_place,buses.bus_number FROM routes
+                                            JOIN buses ON routes.bus_id = buses.id WHERE routes.id = $route_id");
+
+                $routeData_bus = $routeQuery_bus->fetch_assoc();
+                $busno = $routeData_bus['bus_number'];
+
+
+                $routeQuery_driver = $conn->query("SELECT routes.departure_place,routes.arrival_place,routes.time,routes.date,buses.bus_number,drivers.name AS driver_name,drivers.phone AS driver_phone
+                                        FROM routes JOIN buses ON routes.bus_id = buses.id JOIN drivers ON buses.driver_id = drivers.id WHERE routes.id = $route_id");
+
+                $routeData_driver = $routeQuery_driver->fetch_assoc();
+
+                $drivername = $routeData_driver['driver_name'];
+                $driverphone = $routeData_driver['driver_phone'];
 
                 try {
                     $mail->isSMTP();
@@ -126,6 +145,18 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$route_id</td>
                                         </tr>
                                         <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Bus No</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$busno</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Driver Name</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$drivername</td>
+                                        </tr>
+                                        <tr>
+                                            <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Driver Phone number</strong></td>
+                                            <td style='border: 1px solid #ddd; padding: 8px;'>$driverphone</td>
+                                        </tr>
+                                        <tr>
                                             <td style='border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2;'><strong>Bus Departure place</strong></td>
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$departure_place</td>
                                         </tr>
@@ -158,7 +189,12 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                             <td style='border: 1px solid #ddd; padding: 8px;'>$email</td>
                                         </tr>
                                     </table>
-
+                                    <p style='margin-top: 20px;'>Thank you for choosing RIDESYNC! Your booking is confirmed. Please arrive at the departure place at least 30 minutes before the scheduled time.</p>
+                                    <p>If you have any questions or need to make changes to your booking, please contact us at <strong> <br>
+                                    <p>Call driver at: $driverphone - ($drivername) to know about the route.</p>
+                                    <p style='margin-top: 20px;'>For any other queries, you can reach us at <strong>
+                                    <h3>Contact</h3>
+                                    <Telephone:>Email : ridesync@outlook.com \nTelephone: +91 - 0123456789</p>
                                     <p style='margin-top: 20px;'>We look forward to serving you! </p>
                                     <p>Best regards,<br><strong>RIDESYNC</strong></p>
                                 </div>
@@ -228,6 +264,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <h2>Available Routes</h2>
 
         <form class="form2" method="GET" action="">
+            <label for="filter_id">Route ID:</label>
+            <input type="text" name="filter_id" id="filter_id" placeholder="Enter route ID" autocomplete="off">
             <label for="filter_departure">Departure Place:</label>
             <input type="text" name="filter_departure" id="filter_departure" placeholder="Enter departure place" autocomplete="off">
             <label for="filter_arrival">Arrival Place:</label>
@@ -259,11 +297,16 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
                     $sql = "SELECT routes.id, date, time, departure_place, arrival_place, bus_id, total_seats, duration, available_seats, buses.bus_number 
                     FROM routes
-                    JOIN buses ON routes.bus_id = buses.id";
+                    JOIN buses ON routes.bus_id = buses.id ";
 
                     $conditions = [];
                     $conditions[] = "date >= CURDATE()";
 
+                    if (isset($_GET['filter_id']) && !empty($_GET['filter_id'])) {
+                        $filter_id = $_GET['filter_id'];
+                        $conditions[] = "routes.id = '$filter_id'";
+                    }
+                    
                     if (!empty($filter_departure)) {
                         $conditions[] = "departure_place LIKE '%$filter_departure%'";
                     }
@@ -276,6 +319,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                     if (count($conditions) > 0) {
                         $sql .= " WHERE " . implode(' AND ', $conditions);
                     }
+                    $sql .= " ORDER BY routes.id";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

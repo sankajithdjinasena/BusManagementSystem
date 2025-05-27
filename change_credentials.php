@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'db_config.php';
-include 'backbtn.php';
 
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 

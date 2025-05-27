@@ -1,5 +1,4 @@
 <?php include 'db_config.php';
-include 'backbtn.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,8 +9,6 @@ include 'backbtn.php';
 
 </head>
 <body>
-        <?php include 'admin_nav.php'; ?>
-
     <h2>Bookings</h2>
 
     <form method="GET" action="">
