@@ -2,6 +2,7 @@
 include 'db_config.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 
+include 'backbtn.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

@@ -21,8 +21,15 @@ label {
     font-weight: bold;
     color: #555;
 }
-input[type="text"], input[type="number"], input[type="submit"], input[type="date"],select,
-button {
+input[type="text"], input[type="number"], input[type="submit"], input[type="date"],select{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+#panel-btn{
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

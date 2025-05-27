@@ -1,4 +1,5 @@
-<?php include 'db_config.php'; ?>
+<?php include 'db_config.php'; 
+include 'backbtn.php'?>
 <!DOCTYPE html>
 <html>
 <head>

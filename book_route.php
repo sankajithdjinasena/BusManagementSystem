@@ -1,4 +1,5 @@
 <?php include 'db_config.php'; 
+include 'backbtn.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 ?>
 
@@ -233,8 +234,8 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
             <input type="text" name="filter_arrival" id="filter_arrival" placeholder="Enter arrival place" autocomplete="off">
             <label for="filter_date">Date:</label>
             <input type="date" name="filter_date" id="filter_date">
-            <button type="submit">Filter</button>
-            <button type="reset" onclick="window.location='book_route.php'">Clear</button>
+            <button id="panel-btn" type="submit">Filter</button>
+            <button id="panel-btn" type="reset" onclick="window.location='book_route.php'">Clear</button>
         </form>
         <div class="table-container">        
             <table>
