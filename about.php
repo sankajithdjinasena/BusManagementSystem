@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <?php include 'goup.php'; ?>
     <nav>
     <div class="logo"><span style="letter-spacing: 10px; font-size:3rem">RIDESYNC</span></div>
         <div class="pages">

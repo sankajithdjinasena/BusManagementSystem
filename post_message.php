@@ -155,6 +155,7 @@ $messages = $conn->query("SELECT * FROM admin_messages ORDER BY created_at DESC"
 </head>
 
 <body>
+    
     <h1>Post Messages</h1>
 
     <form method="POST" action="post_message.php">

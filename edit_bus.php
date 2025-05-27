@@ -59,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </head>
 <body>
+    <?php include 'admin_nav.php';
+    include 'backbtn.php' ?>
     <h2>Edit Bus </h2>
     <form method="POST">
         <label>Owner ID:</label>

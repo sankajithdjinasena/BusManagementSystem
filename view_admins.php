@@ -12,6 +12,7 @@ include 'backbtn.php';
 
 </head>
 <body>
+    <?php include 'admin_nav.php'; ?>
 
 <h2>Users</h2>
 <form method="GET" action="">

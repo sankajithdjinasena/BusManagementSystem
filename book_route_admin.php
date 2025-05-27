@@ -1,5 +1,5 @@
 <?php include 'db_config.php'; 
-include 'backbtn.php';
+
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 ?>
 
@@ -24,6 +24,7 @@ include 'backbtn.php';
     </style>
 
 <body>
+<?php include 'admin_nav.php'; ?>
     <h2>Book a Route</h2>
     <form class="form1" action="book_route.php" method="POST">
         <label>Route ID:</label>

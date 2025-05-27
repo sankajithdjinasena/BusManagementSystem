@@ -14,6 +14,7 @@ include 'backbtn.php';
     
 </head>
 <body>
+    <?php include 'admin_nav.php'; ?>
     <div class="form">
     <h2>Driver Registration</h2>
 

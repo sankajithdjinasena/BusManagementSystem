@@ -23,6 +23,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 </head>
 
 <body>
+<?php include 'admin_nav.php'; ?>
     <div class="form">
         <h2>Bus Registration</h2>
         <form action="register_bus.php" method="POST">

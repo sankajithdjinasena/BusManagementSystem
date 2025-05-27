@@ -1,4 +1,5 @@
 <?php include 'db_config.php';
+include 'goup.php';
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 ?>
 
@@ -95,7 +96,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                         </li>
                     <?php } ?>
                 <?php } else { ?>
-                    <h1>
+                    <h1 style="color:red">
                         <center>No Announcements</center>
                     </h1>
                 <?php } ?>

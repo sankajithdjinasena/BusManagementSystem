@@ -12,6 +12,7 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 </head>
 
 <body>
+    <?php include 'admin_nav.php'; ?>
     <h2>Contact Messages</h2>
 
     <form method="GET" action="">

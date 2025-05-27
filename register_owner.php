@@ -13,6 +13,7 @@ include 'backbtn.php';
 
     </head>
 <body>
+<?php include 'admin_nav.php'; ?>
     <h2>Bus Owner Registration</h2>
     <div class="form">
     <form action="register_owner.php" method="POST">

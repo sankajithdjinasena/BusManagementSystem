@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+    <?php include 'admin_nav.php';
+    include 'backbtn.php' ?>
     <h2>Edit Route</h2>
     <form method="POST" action="">
         <label for="date">Date:</label>

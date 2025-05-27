@@ -23,6 +23,7 @@ include 'backbtn.php';
 
 </head>
 <body>
+    <?php include 'admin_nav.php'; ?>
     <div class="form">
     <h2>Route Registration</h2>
     <form action="register_route.php" method="POST">

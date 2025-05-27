@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </head>
 <body>
+    <?php include 'admin_nav.php';
+    include 'backbtn.php' ?>
     <h2>Edit Driver</h2>
     <form method="POST">
         <label>Driver Name:</label>
