@@ -8,6 +8,7 @@ if (!isset($_SESSION['admin_id'])) {
 }
 ?>
 <?php include 'db_config.php'; ?>
+<?php include 'goup.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">

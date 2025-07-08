@@ -2,6 +2,8 @@
 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
 include 'backbtn.php';
 ?>
+<?php include 'goup.php'; ?>
+
 
 <!DOCTYPE html>
 <html>

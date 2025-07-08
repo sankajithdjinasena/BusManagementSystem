@@ -1,4 +1,5 @@
 <?php include 'db_config.php';
+include 'goup.php';
 ?>
 <!DOCTYPE html>
 <html>
