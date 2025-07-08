@@ -64,5 +64,44 @@ include 'backbtn.php' ?>
 
     <br>
     <a href="admin_dashboard.php" class="btn-home">Go to Dashboard</a>
+    <footer>
+        <link rel="stylesheet" href="style/footer.css">
+        <div class="footer-grid">
+            <div class="footer-box">
+                <h3>About</h3>
+                <h4 style="font-size: 1.5rem;">
+                    Manage your bus schedules, routes, and bookings efficiently
+                </h4>
+            </div>
+            <div class="footer-box">
+                <h3>Contact</h3>
+                <p class="email-id" style="text-align: left;">Email : ridesync@outlook.com</p>
+                <h4>Telephone: +91 - 0123456789</h4>
+            </div>
+            <div class="footer-box">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="schedules.php">Schedules</a></li>
+                    <li><a href="booking.php" id="active">Booking</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Social Media</h3>
+                <br>
+                <div class="social">
+                    <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com/ridesync/" target="_blank"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.linkedin.com/in/ridesync/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-end">
+            <h4>&copy; 2025 RIDESYNC. All Rights Reserved</h4>
+            <h5>Created by Sankajith Jinasena</h5>
+        </div>
+    </footer>
 </body>
 </html>
