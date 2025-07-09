@@ -23,7 +23,24 @@ include 'goup.php'?>
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-        }        
+        }  
+        button[type="reset"]{
+            background-color: #007bff;
+        }
+        button[type="reset"]:hover{
+            background-color: #0056b3;
+        }
+
+        button[type="reset"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }      
     </style>
     <title>View Records</title>
 </head>
@@ -36,6 +53,7 @@ include 'goup.php'?>
         <label for="filter_bus_owner">Filter by NIC:</label>
         <input type="text" name="filter_bus_owner" id="filter_bus_owner" placeholder="Enter NIC">
         <button type="submit">Filter</button>
+    <button type="reset" onclick="window.location='view_records.php'">Clear</button>
     </form>
     <div class="table-container">
     <table>
@@ -78,6 +96,8 @@ include 'goup.php'?>
         <label for="filter_driver">Filter by License:</label>
         <input type="text" name="filter_license" id="filter_driver" placeholder="Enter License No:">
         <button type="submit">Filter</button>
+        <button type="reset" onclick="window.location='view_records.php'">Clear</button>
+
     </form>
     <div class="table-container">
     <table>
@@ -120,6 +140,8 @@ include 'goup.php'?>
         <label for="filter_bus">Filter by Bus Number:</label>
         <input type="text" name="filter_bus" id="filter_bus" placeholder="Enter bus number">
         <button type="submit">Filter</button>
+        <button type="reset" onclick="window.location='view_records.php'">Clear</button>
+
     </form>
     <div class="table-container">
     <table>

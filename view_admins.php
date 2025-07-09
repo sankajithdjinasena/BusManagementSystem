@@ -23,6 +23,16 @@ include 'goup.php';
     <label for="filter_email">Email: </label>
     <input type="text" name="filter_email" id="filter_email" placeholder="Enter Email here">
     <button type="submit">Filter</button>
+    <style>
+        button[type="reset"]{
+            background-color: #007bff;
+        }
+        button[type="reset"]:hover{
+            background-color: #0056b3;
+        }
+    </style>
+
+    <button type="reset" onclick="window.location='view_admins.php'">Clear</button>
 </form>
 
 <table>

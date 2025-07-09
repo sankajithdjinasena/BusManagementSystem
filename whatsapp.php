@@ -3,7 +3,7 @@
 
     </head>
     <body>
-        <a href="https://wa.me/+94123456789" class="whatsapp-logo" aria-label="Chat with us on WhatsApp" ><i class='bx bxl-whatsapp'></i></a>
+        <a href="https://wa.me/+94123456789" class="whatsapp-logo" aria-label="Chat with us on WhatsApp" target="_blank"><i class='bx bxl-whatsapp'></i></a>
         <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
     </body>

@@ -12,6 +12,8 @@ include 'backbtn.php';
     <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/view_record.css">
     <link rel="icon" href="Images/LogoN.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
 
     <style>
         select {
@@ -51,7 +53,7 @@ include 'backbtn.php';
         <select name="bus_id" required>
                 <option value="">-- Select Bus ID --</option>
                 <?php
-                $query = "SELECT id, bus_number FROM buses"; 
+                $query = "SELECT id, bus_number FROM buses ORDER BY id"; 
                 $result = $conn->query($query);
                 
                 while ($row = $result->fetch_assoc()) {
@@ -176,7 +178,7 @@ include 'backbtn.php';
                 <h3>Social Media</h3>
                 <br>
                 <div class="social">
-                    <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook' style="color: white;"></i></a>
                     <a href="https://www.instagram.com/ridesync/" target="_blank"><i class='bx bxl-instagram'></i></a>
                     <a href="https://www.linkedin.com/in/ridesync/" target="_blank"><i class='bx bxl-linkedin'></i></a>
                 </div>

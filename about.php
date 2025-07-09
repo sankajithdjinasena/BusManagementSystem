@@ -48,23 +48,23 @@
 
     <div class="mission-vision">
         <div class="mission-vision-grid">
-            <div class="box">
+            <div class="box" style="min-height: 300px;">
                 <h2>Efficient Bus Operations</h2>
                 <h3>Optimized scheduling and route management to minimize delays and fuel consumption.</h3>
             </div>
-            <div class="box">
+            <div class="box" style="min-height: 300px;">
                 <h2>Seamless Ticket Booking</h2>
                 <h3>Digital ticketing and seat reservations for enhanced passenger convenience.</h3>
             </div>
-            <div class="box">
+            <div class="box" style="min-height: 300px;">
                 <h2>Smart Fleet Management</h2>
                 <h3>Real-time updates on bus availability, driver schedules, and vehicle status.</h3>
             </div>
-            <div class="box">
+            <div class="box" style="min-height: 300px;">
                 <h2>Passenger Engagement</h2>
                 <h3>User feedback and complaint handling for continuous service improvement.</h3>
             </div>
-            <div class="box">
+            <div class="box" style="min-height: 300px;">
                 <h2>Sustainable Urban Mobility</h2>
                 <h3>Reduced carbon footprint through optimized bus routes and schedules.</h3>
             </div>
