@@ -32,6 +32,15 @@ echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
         <option value="">-- Select Route --</option>
         <?php
         $query = "SELECT id, route_name,departure_place,arrival_place FROM routes"; 
+        $conditions = [];
+        $conditions[] = "date >= CURDATE()";
+        if (!empty($filter_date)) {
+                $conditions[] = "date = '$filter_date'";
+        }
+        if (!empty($conditions)) {
+            $query .= " WHERE " . implode(" AND ", $conditions);
+        }
+
         $result = $conn->query($query);
         
         while ($row = $result->fetch_assoc()) {
